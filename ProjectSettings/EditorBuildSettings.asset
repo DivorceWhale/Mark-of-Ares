@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Half-Blood.unity
+    guid: 2f72abfeab3f18e499a6d61aeea529c6
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 868cba042f5c83e459afb20c4e82be9c
   - enabled: 1
