@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5644160800028512729}
   - component: {fileID: 7615834489367995667}
   - component: {fileID: 1296867916241497482}
+  - component: {fileID: 4860008033491129279}
   m_Layer: 0
   m_Name: PP_Theme_07_Spear_002
   m_TagString: Untagged
@@ -112,3 +113,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6143898996665494940, guid: 3ea12b315dfa3914d96d2432f1a9c444, type: 3}
+--- !u!114 &4860008033491129279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8264137675185652934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdc3f26b41398cb46bf331c18259bcc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrabObjects
+  rightHandAnchor: {fileID: 0}
+  leftHandAnchor: {fileID: 0}
+  grabRange: 0.2
+  rightPositionOffset: {x: 0, y: -0.5, z: 0}
+  rightRotationOffset: {x: 0, y: 0, z: 0}
+  leftPositionOffset: {x: 0, y: -0.5, z: 0}
+  leftRotationOffset: {x: 0, y: 0, z: 0}
