@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class GrabObjects : MonoBehaviour
 {
-    [Header("Hand Anchors")]
+    [Header("Right Hand Anchor")]
     public Transform rightHandAnchor;
-    public Transform leftHandAnchor;
 
     [Header("Grab Settings")]
     public float grabRange = 0.2f; // How close hand must be
@@ -12,10 +11,6 @@ public class GrabObjects : MonoBehaviour
     [Header("Right Hand Offset")]
     public Vector3 rightPositionOffset = Vector3.zero;
     public Vector3 rightRotationOffset = Vector3.zero;
-
-    [Header("Left Hand Offset")]
-    public Vector3 leftPositionOffset = Vector3.zero;
-    public Vector3 leftRotationOffset = Vector3.zero;
 
     private Rigidbody rb;
     private bool isHeld = false;
@@ -51,8 +46,7 @@ public class GrabObjects : MonoBehaviour
             lastRotation = currentHand.rotation;
 
             // Drop input (trigger)
-            if ((currentHand == rightHandAnchor && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch)) ||
-                (currentHand == leftHandAnchor && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch)))
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
             {
                 Drop();
             }
@@ -63,15 +57,10 @@ public class GrabObjects : MonoBehaviour
         }
         else
         {
-            // Try grab right hand
+            // Try grab right hand (grip button)
             if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
             {
                 TryGrab(rightHandAnchor, rightPositionOffset, rightRotationOffset);
-            }
-            // Try grab left hand
-            else if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch))
-            {
-                TryGrab(leftHandAnchor, leftPositionOffset, leftRotationOffset);
             }
         }
     }
