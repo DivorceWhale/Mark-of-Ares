@@ -3,11 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneChangerPK : MonoBehaviour
 {
-    public string triggerTag = "[Building Blocks] Camera Rig";
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(triggerTag))
+        if (other.CompareTag("Player"))
         {
             SceneManager.LoadScene("Parkour");
         }
