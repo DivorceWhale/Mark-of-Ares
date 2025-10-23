@@ -3351,32 +3351,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 952934693399518916, guid: 0fe3eee9cb57991458b45cfef55483ef, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 676295708}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fe3eee9cb57991458b45cfef55483ef, type: 3}
---- !u!1 &676295707 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 952934693399518916, guid: 0fe3eee9cb57991458b45cfef55483ef, type: 3}
-  m_PrefabInstance: {fileID: 676295706}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &676295708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 676295707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabc90822ed27db428b3f8441bbcaa91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShieldAttach
-  leftHandAnchor: {fileID: 107920557}
-  shieldPrefab: {fileID: 676295707}
-  positionOffset: {x: 0, y: 0.2, z: 0}
-  rotationOffset: {x: 0, y: 0, z: 0}
 --- !u!1001 &679414138
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7079,7 +7055,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -11787,7 +11763,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938540068}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.5}
+  m_LocalPosition: {x: 0, y: 0, z: 7.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11796,7 +11772,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1, y: 1.97}
+  m_AnchoredPosition: {x: -1, y: 1.25}
   m_SizeDelta: {x: 5, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1943075939
