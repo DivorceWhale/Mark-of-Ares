@@ -1179,7 +1179,7 @@ GameObject:
   - component: {fileID: 253690203}
   - component: {fileID: 253690205}
   - component: {fileID: 253690204}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1617,7 +1617,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967287
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2193,7 +2193,7 @@ GameObject:
   - component: {fileID: 400254792}
   - component: {fileID: 400254794}
   - component: {fileID: 400254793}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2805,7 +2805,7 @@ GameObject:
   - component: {fileID: 570969212}
   - component: {fileID: 570969214}
   - component: {fileID: 570969213}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2940,7 +2940,7 @@ GameObject:
   - component: {fileID: 574107622}
   - component: {fileID: 574107624}
   - component: {fileID: 574107623}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3500,6 +3500,7 @@ GameObject:
   - component: {fileID: 675300989}
   - component: {fileID: 675300988}
   - component: {fileID: 675300987}
+  - component: {fileID: 675300990}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -3568,6 +3569,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &675300990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675300986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab68ce6587aab0146b8dabefbd806791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.UI.XRUIInputModule
+  m_SendPointerHoverToParent: 1
+  m_ClickSpeed: 0.3
+  m_MoveDeadzone: 0.6
+  m_RepeatDelay: 0.5
+  m_RepeatRate: 0.1
+  m_TrackedDeviceDragThresholdMultiplier: 2
+  m_TrackedScrollDeltaMultiplier: 5
+  m_BypassUIToolkitEvents: 0
+  m_ActiveInputMode: 0
+  m_EnableXRInput: 1
+  m_EnableMouseInput: 1
+  m_EnableTouchInput: 1
+  m_EnableGamepadInput: 1
+  m_EnableJoystickInput: 1
+  m_PointAction: {fileID: 0}
+  m_LeftClickAction: {fileID: 0}
+  m_MiddleClickAction: {fileID: 0}
+  m_RightClickAction: {fileID: 0}
+  m_ScrollWheelAction: {fileID: 0}
+  m_NavigateAction: {fileID: 0}
+  m_SubmitAction: {fileID: 0}
+  m_CancelAction: {fileID: 0}
+  m_EnableBuiltinActionsAsFallback: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
 --- !u!1001 &676295706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3698,7 +3738,7 @@ GameObject:
   - component: {fileID: 682929320}
   - component: {fileID: 682929322}
   - component: {fileID: 682929321}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3923,7 +3963,7 @@ GameObject:
   - component: {fileID: 722249455}
   - component: {fileID: 722249454}
   - component: {fileID: 722249453}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: ResumeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5280,7 +5320,7 @@ GameObject:
   - component: {fileID: 910417514}
   - component: {fileID: 910417516}
   - component: {fileID: 910417515}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Pause Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7901,7 +7941,7 @@ GameObject:
   - component: {fileID: 1317790835}
   - component: {fileID: 1317790837}
   - component: {fileID: 1317790836}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8316,7 +8356,7 @@ GameObject:
   - component: {fileID: 1412797531}
   - component: {fileID: 1412797533}
   - component: {fileID: 1412797532}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9621,7 +9661,7 @@ GameObject:
   - component: {fileID: 1526364413}
   - component: {fileID: 1526364412}
   - component: {fileID: 1526364411}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11696,7 +11736,7 @@ GameObject:
   - component: {fileID: 1855298611}
   - component: {fileID: 1855298610}
   - component: {fileID: 1855298609}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: SettingsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12573,7 +12613,9 @@ GameObject:
   - component: {fileID: 1938540071}
   - component: {fileID: 1938540070}
   - component: {fileID: 1938540069}
-  m_Layer: 5
+  - component: {fileID: 1938540073}
+  - component: {fileID: 1938540074}
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12630,7 +12672,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 304210728}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -12667,6 +12709,49 @@ RectTransform:
   m_AnchoredPosition: {x: -1, y: 1.25}
   m_SizeDelta: {x: 5, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1938540073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938540068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ace07e6d6d1a01478b559f472045c95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  playerHead: {fileID: 304210731}
+  distanceFromHead: 7
+  localOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &1938540074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938540068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee10491ef6d5d1d49a270cf6b09bdc19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.VR::OVROverlayCanvas
+  _enableMipmapping: 0
+  _dynamicResolution: 1
+  _redrawResolutionThreshold: 2147483647
+  rectTransform: {fileID: 1938540072}
+  maxTextureSize: 2048
+  manualRedraw: 0
+  renderInterval: 1
+  renderIntervalFrameOffset: 0
+  expensive: 0
+  layer: 5
+  opacity: 2
+  shape: 0
+  curveRadius: 1
+  overlapMask: 0
+  overlayType: 2
+  _overlayEnabled: 1
 --- !u!1001 &1943075939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13862,7 +13947,7 @@ GameObject:
   - component: {fileID: 2133610445}
   - component: {fileID: 2133610447}
   - component: {fileID: 2133610446}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
