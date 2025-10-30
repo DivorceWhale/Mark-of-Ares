@@ -3208,7 +3208,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: a29dc5e705e2f4a429ca2000cb221c43, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5654,7 +5654,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: a29dc5e705e2f4a429ca2000cb221c43, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7599,6 +7599,8 @@ MonoBehaviour:
   maxHealth: 100
   respawnOnDeath: 1
   respawnPoint: {fileID: 438393043}
+  enableFallCheck: 1
+  fallY: -20
   healthBar: {fileID: 570969213}
 --- !u!1 &1276767015 stripped
 GameObject:
@@ -11006,7 +11008,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: a29dc5e705e2f4a429ca2000cb221c43, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11130,7 +11132,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: a29dc5e705e2f4a429ca2000cb221c43, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
