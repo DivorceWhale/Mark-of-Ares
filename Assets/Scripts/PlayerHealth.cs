@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 [DisallowMultipleComponent]
 public class PlayerHealth : MonoBehaviour
@@ -18,6 +19,18 @@ public class PlayerHealth : MonoBehaviour
 
     [Header("UI")]
     public HealthBar healthBar; // drag your HealthBar here
+
+    [Header("Death Bounce (FX)")]
+    [Tooltip("Enable a quick up-down bounce when the player dies.")]
+    public bool enableDeathBounce = true;
+    [Tooltip("Peak height of each bounce, in meters.")]
+    public float bounceHeight = 0.6f;
+    [Tooltip("Time for ONE up-down bounce.")]
+    public float bounceDuration = 0.35f;
+    [Tooltip("How many bounces to play before respawn.")]
+    public int bounceCount = 1;
+    [Tooltip("Temporarily disable CharacterController during bounce to avoid interference.")]
+    public bool disableControllerDuringBounce = true;
 
     // Cached references for safe teleporting
     private Rigidbody _rb;
@@ -60,7 +73,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (enableFallCheck && transform.position.y < fallY)
         {
-            // Count as a death-free reset; don�t penalize health
+            // Count as a death-free reset; don’t penalize health
             SafeTeleport(_currentCheckpoint);
             // Optionally, you could also call TakeDamage(maxHealth) to "kill"
         }
@@ -97,15 +110,75 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
-        if (respawnOnDeath && _currentCheckpoint != null)
+        if (respawnOnDeath)
         {
-            currentHealth = maxHealth;
-            if (healthBar != null) healthBar.SetHealth((int)maxHealth);
-            SafeTeleport(_currentCheckpoint);
+            // Start the bounce + respawn sequence
+            StartCoroutine(DeathSequence());
         }
         else
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    IEnumerator DeathSequence()
+    {
+        // Stop motion immediately
+        ZeroMotion();
+
+        // Optional: quick bounce where the player died (visual feedback)
+        if (enableDeathBounce && bounceDuration > 0f && bounceCount > 0)
+        {
+            yield return StartCoroutine(PlayDeathBounce());
+        }
+
+        // 🕒 NEW: show a delay before respawn
+        Debug.Log("You died! Respawning in 2 seconds...");
+        yield return new WaitForSeconds(2f);  // pause for 2 seconds
+
+        // Respawn
+        currentHealth = maxHealth;
+        if (healthBar != null) healthBar.SetHealth((int)maxHealth);
+        SafeTeleport(_currentCheckpoint);
+    }
+
+
+    IEnumerator PlayDeathBounce()
+    {
+        bool ccWasEnabled = _cc && _cc.enabled;
+
+        if (_cc && disableControllerDuringBounce) _cc.enabled = false;
+
+        Vector3 basePos = transform.position;
+
+        // Use a simple sine arch: y = sin(pi * t) scaled by bounceHeight
+        for (int i = 0; i < bounceCount; i++)
+        {
+            float t = 0f;
+            while (t < bounceDuration)
+            {
+                t += Time.deltaTime;
+                float norm = Mathf.Clamp01(t / bounceDuration);
+                float yOffset = Mathf.Sin(norm * Mathf.PI) * bounceHeight; // up then down
+                Vector3 target = new Vector3(basePos.x, basePos.y + yOffset, basePos.z);
+                MoveTransformSafely(target);
+                yield return null;
+            }
+
+            // Reset to base position after each bounce to avoid drift
+            MoveTransformSafely(basePos);
+        }
+
+        if (_cc && disableControllerDuringBounce && ccWasEnabled)
+            _cc.enabled = true;
+    }
+
+    void ZeroMotion()
+    {
+        if (_rb)
+        {
+            _rb.linearVelocity = Vector3.zero;        // fixed: linearVelocity -> velocity
+            _rb.angularVelocity = Vector3.zero;
         }
     }
 
@@ -114,11 +187,7 @@ public class PlayerHealth : MonoBehaviour
         if (target == null) return;
 
         // Stop motion
-        if (_rb)
-        {
-            _rb.linearVelocity = Vector3.zero;
-            _rb.angularVelocity = Vector3.zero;
-        }
+        ZeroMotion();
 
         // Safest for CharacterController
         if (_cc && _cc.enabled)
@@ -130,6 +199,21 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             transform.SetPositionAndRotation(target.position, target.rotation);
+        }
+    }
+
+    // Moves transform, handling CharacterController if needed (no rotation change)
+    void MoveTransformSafely(Vector3 position)
+    {
+        if (_cc && _cc.enabled)
+        {
+            _cc.enabled = false;
+            transform.position = position;
+            _cc.enabled = true;
+        }
+        else
+        {
+            transform.position = position;
         }
     }
 }
