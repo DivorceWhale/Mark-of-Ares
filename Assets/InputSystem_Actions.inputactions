@@ -55,7 +55,7 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "547caa88-34b6-48ce-bac0-3655b3510bc7",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -367,7 +367,7 @@
                 {
                     "name": "",
                     "id": "b3c12f02-dfcb-4502-865a-ed037eefa26e",
-                    "path": "<XRController>/trigger",
+                    "path": "<XRController>{LeftHand}/thumbstickClicked",
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
