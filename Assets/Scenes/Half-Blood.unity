@@ -7399,6 +7399,8 @@ GameObject:
   - component: {fileID: 1266225113}
   - component: {fileID: 1266225119}
   - component: {fileID: 1266225120}
+  - component: {fileID: 1266225122}
+  - component: {fileID: 1266225121}
   m_Layer: 0
   m_Name: '[BuildingBlock] Camera Rig'
   m_TagString: Player
@@ -7602,6 +7604,58 @@ MonoBehaviour:
   enableFallCheck: 1
   fallY: -20
   healthBar: {fileID: 570969213}
+--- !u!114 &1266225121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266225112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8d66f67b9fd40a4eac6fa1b3ecf58c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRDoubleJump
+  jumpForce: 5
+  gravity: -9.81
+  maxJumps: 2
+  jumpAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Jump
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 8960f216-c463-499a-aab2-e87b5252aa22
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+--- !u!143 &1266225122
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266225112}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1.6, z: 0}
 --- !u!1 &1276767015 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 137650, guid: 826b6a0b570e8460990010fa615b5a2a, type: 3}
