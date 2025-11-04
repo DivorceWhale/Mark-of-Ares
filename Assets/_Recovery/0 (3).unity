@@ -543,7 +543,7 @@ Transform:
   m_GameObject: {fileID: 435818170}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.23, y: 1.63, z: -38.01}
+  m_LocalPosition: {x: 16.23, y: 2.3, z: -38.01}
   m_LocalScale: {x: 4, y: 0.3, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -812,7 +812,7 @@ Transform:
   m_GameObject: {fileID: 600071648}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.53, y: 1.37, z: -39.45}
+  m_LocalPosition: {x: 12.53, y: 1, z: -39.45}
   m_LocalScale: {x: 4, y: 0.3, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1967,7 +1967,7 @@ Transform:
   m_GameObject: {fileID: 1485989260}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.77, y: 1.74, z: -33.49}
+  m_LocalPosition: {x: 14.77, y: 2.27, z: -33.49}
   m_LocalScale: {x: 4, y: 0.3, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2575,7 +2575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   respawnPoint: {fileID: 1831070744}
-  fallY: 0.01
+  fallY: 0.1
 --- !u!1 &2120016260
 GameObject:
   m_ObjectHideFlags: 0
