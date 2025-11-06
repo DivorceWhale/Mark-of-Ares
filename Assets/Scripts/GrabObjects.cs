@@ -111,7 +111,7 @@ public class GrabObjects : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // Auto-return spear when it hits the floor
-        if (!isHeld && collision.gameObject.CompareTag(floorTag))
+        if (!isHeld && collision.gameObject.CompareTag("Floor"))
         {
             StartCoroutine(ReturnToHand());
         }

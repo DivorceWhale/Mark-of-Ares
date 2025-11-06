@@ -9242,10 +9242,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1296867916241497482, guid: 87a7691b577e73842977fe43683577b1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4860008033491129279, guid: 87a7691b577e73842977fe43683577b1, type: 3}
       propertyPath: rightHandAnchor
       value: 
       objectReference: {fileID: 1732362181}
+    - target: {fileID: 4860008033491129279, guid: 87a7691b577e73842977fe43683577b1, type: 3}
+      propertyPath: rightRotationOffset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860008033491129279, guid: 87a7691b577e73842977fe43683577b1, type: 3}
+      propertyPath: rightRotationOffset.z
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 8264137675185652934, guid: 87a7691b577e73842977fe43683577b1, type: 3}
       propertyPath: m_Name
       value: Spear
