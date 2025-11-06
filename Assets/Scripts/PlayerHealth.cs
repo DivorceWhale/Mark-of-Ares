@@ -18,13 +18,17 @@ public class SimpleFallRespawn : MonoBehaviour
 
     void Respawn()
     {
-        if (respawnPoint == null)
-        {
-            Debug.LogWarning("No respawn point assigned!");
-            return;
-        }
+        //  if (respawnPoint == null)
+        // {
+        //Debug.LogWarning("No respawn point assigned!");
+        // return;
+        // }
 
         // Reset position and rotation
+
+        var ui = FindObjectOfType<RiseAgainUI>();
+        if (ui) ui.Show("Rise again — keep going", 1.5f);
+
         transform.SetPositionAndRotation(respawnPoint.position, respawnPoint.rotation);
 
         // If using Rigidbody, stop velocity
