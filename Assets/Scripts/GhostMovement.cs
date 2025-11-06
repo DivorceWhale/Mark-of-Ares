@@ -10,6 +10,10 @@ public class GhostMovement : MonoBehaviour
     public float moveSpeed = 1f;
     public float driftRadius = 3f;
 
+    [Header("Rotation (Ghostly Spin)")]
+    public float rotationSpeed = 15f; // degrees per second
+    public Vector3 rotationAxis = new Vector3(0, 1, 0.2f); // slightly off-axis for a natural feel
+
     [Header("Spawner Bounds (Optional)")]
     public string spawnerTag = "Spawner"; // Tag of the spawner in the scene
     private BoxCollider spawnerCollider;
@@ -42,6 +46,9 @@ public class GhostMovement : MonoBehaviour
         // Drift toward target
         Vector3 horizontalTarget = new Vector3(targetPos.x, newY, targetPos.z);
         transform.position = Vector3.MoveTowards(transform.position, horizontalTarget, moveSpeed * Time.deltaTime);
+
+        // Gentle ghostly spin
+        transform.Rotate(rotationAxis * rotationSpeed * Time.deltaTime, Space.Self);
 
         // Pick new target if close
         if (Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z),
