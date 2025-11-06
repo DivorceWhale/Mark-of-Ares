@@ -370,12 +370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5bdc29f9841dd4c9bcd958d2ad7fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHealth: 100
-  respawnOnDeath: 1
   respawnPoint: {fileID: 196546146}
-  enableFallCheck: 0
   fallY: -20
-  healthBar: {fileID: 0}
 --- !u!1001 &77297288
 PrefabInstance:
   m_ObjectHideFlags: 0
