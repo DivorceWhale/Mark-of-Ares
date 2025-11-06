@@ -11,16 +11,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Half-Blood.unity
     guid: 2f72abfeab3f18e499a6d61aeea529c6
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Prefab Builder.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Spear Throwing.unity
     guid: daccf5b110461624a87f6967cb32641e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/1v1 Duels.unity
     guid: 452058c2dca151b448800ff16c6c862e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Capture the Flag.unity
     guid: 14dd512417192aa4faaeea32e54f13fc
   - enabled: 1
