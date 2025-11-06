@@ -6,11 +6,15 @@ public class GrabObjects : MonoBehaviour
     public Transform rightHandAnchor;
 
     [Header("Grab Settings")]
-    public float grabRange = 0.2f; // How close hand must be
+    public float grabRange = 0.2f;
 
     [Header("Right Hand Offset")]
     public Vector3 rightPositionOffset = Vector3.zero;
     public Vector3 rightRotationOffset = Vector3.zero;
+
+    [Header("Auto-Return")]
+    public string floorTag = "Floor";       // Tag of the floor object
+    public float returnDelay = 0.5f;        // Delay before returning to hand
 
     private Rigidbody rb;
     private bool isHeld = false;
@@ -102,5 +106,29 @@ public class GrabObjects : MonoBehaviour
         }
 
         currentHand = null;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Auto-return spear when it hits the floor
+        if (!isHeld && collision.gameObject.CompareTag(floorTag))
+        {
+            StartCoroutine(ReturnToHand());
+        }
+    }
+
+    private System.Collections.IEnumerator ReturnToHand()
+    {
+        yield return new WaitForSeconds(returnDelay);
+
+        // Reset position & rotation to hand
+        Grab(rightHandAnchor, rightPositionOffset, rightRotationOffset);
+
+        // Optional: reset velocity so it doesn't fly around
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
     }
 }

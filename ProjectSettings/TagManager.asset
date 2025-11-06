@@ -4,7 +4,10 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Axe
+  - Floor
+  - Spear
+  - Wall
+  - Spawner
   layers:
   - Default
   - TransparentFX
