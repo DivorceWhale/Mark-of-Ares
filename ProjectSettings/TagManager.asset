@@ -8,6 +8,7 @@ TagManager:
   - Spear
   - Wall
   - Spawner
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX

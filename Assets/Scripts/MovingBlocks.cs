@@ -1,64 +1,71 @@
 using UnityEngine;
 
-public class MovingBlock : MonoBehaviour
+[RequireComponent(typeof(Rigidbody))]
+public class PlatformMover : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public Vector3 moveDirection = Vector3.right; // Direction to move
-    public float moveDistance = 5f;               // Distance to move
-    public float moveSpeed = 2f;                  // Speed of movement
+    public Vector3 moveDirection = Vector3.right;
+    public float moveDistance = 5f;
+    public float moveSpeed = 2f;
+    public bool pingPong = true;
 
+    // Exposed read-only per-physics-step motion
+    public Vector3 FrameDelta { get; private set; }
+    public Vector3 Velocity { get; private set; }
+
+    private Rigidbody rb;
     private Vector3 startPos;
-    private Vector3 targetPos;
-    private bool movingToTarget = true;
+    private float t; // normalized along the path 0..1
+    private int dir = 1;
 
-    private Vector3 lastPosition; // For tracking platform movement
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.isKinematic = true;     // important
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+    }
 
     void Start()
     {
         startPos = transform.position;
-        targetPos = startPos + moveDirection.normalized * moveDistance;
-        lastPosition = transform.position;
+        t = 0f;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        // Move between start and target positions
-        if (movingToTarget)
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+        // advance t
+        float dt = moveSpeed * Time.fixedDeltaTime / Mathf.Max(moveDistance, 0.0001f);
+        t += dir * dt;
+
+        if (pingPong)
+        {
+            if (t >= 1f) { t = 1f; dir = -1; }
+            else if (t <= 0f) { t = 0f; dir = 1; }
+        }
         else
-            transform.position = Vector3.MoveTowards(transform.position, startPos, moveSpeed * Time.deltaTime);
-
-        // Switch directions when reaching the endpoints
-        if (Vector3.Distance(transform.position, targetPos) < 0.01f)
-            movingToTarget = false;
-        else if (Vector3.Distance(transform.position, startPos) < 0.01f)
-            movingToTarget = true;
-
-        lastPosition = transform.position;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        // If player stands on platform, make player a child
-        if (collision.gameObject.CompareTag("Player"))
         {
-            collision.transform.SetParent(transform);
+            // wrap-around loop
+            if (t > 1f) t -= 1f;
+            if (t < 0f) t += 1f;
         }
+
+        Vector3 target = startPos + moveDirection.normalized * (t * moveDistance);
+        Vector3 next = target;
+
+        // compute deltas before moving
+        Vector3 before = rb.position;
+        rb.MovePosition(next);
+
+        FrameDelta = rb.position - before;
+        Velocity = FrameDelta / Time.fixedDeltaTime;
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        // Remove parent when player leaves the platform
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.transform.SetParent(null);
-        }
-    }
-
-    // Optional: Draw gizmos in Scene view
+#if UNITY_EDITOR
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
-        Gizmos.DrawLine(transform.position, transform.position + moveDirection.normalized * moveDistance);
+        Vector3 a = Application.isPlaying ? startPos : transform.position;
+        Gizmos.DrawLine(a, a + moveDirection.normalized * moveDistance);
     }
+#endif
 }
