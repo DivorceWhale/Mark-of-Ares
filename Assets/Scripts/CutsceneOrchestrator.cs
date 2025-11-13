@@ -18,6 +18,8 @@ public class CutsceneOrchestrator : MonoBehaviour
     public EnemySpawner spawner;
     public Animator kidAnim;
     public Animator momAnim;
+    public MomSimpleDeath momDeath;
+
 
     bool cutsceneRunning;
 
@@ -84,8 +86,10 @@ public class CutsceneOrchestrator : MonoBehaviour
 
     public void Signal_MomDeath()
     {
-        if (momAnim) momAnim.SetTrigger("Death");
+        if (momAnim) momAnim.SetTrigger("Death");   // optional, if you have an Animator
+        if (momDeath) momDeath.Die();              // our simple fall-over script
     }
+
 
     public void Signal_Teleport()
     {
