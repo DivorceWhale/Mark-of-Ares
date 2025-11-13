@@ -3163,8 +3163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3249600b4f926f843945cbb0b80c5e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  currentScore: 19
-  scoreToWin: 20
+  currentScore: 0
+  scoreToWin: 10
   sceneToLoad: Half-Blood
 --- !u!4 &684922967
 Transform:
@@ -9632,7 +9632,7 @@ PrefabInstance:
       objectReference: {fileID: 1732362181}
     - target: {fileID: 4860008033491129279, guid: 87a7691b577e73842977fe43683577b1, type: 3}
       propertyPath: rightPositionOffset.y
-      value: -0.5
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4860008033491129279, guid: 87a7691b577e73842977fe43683577b1, type: 3}
       propertyPath: rightRotationOffset.y
@@ -9715,7 +9715,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733226803}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 0.01
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -10121,7 +10121,7 @@ Transform:
   m_GameObject: {fileID: 1896065189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.85, y: 5, z: -18.95}
+  m_LocalPosition: {x: -19.85, y: 3, z: -18.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
