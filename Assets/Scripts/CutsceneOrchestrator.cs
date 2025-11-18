@@ -14,7 +14,6 @@ public class CutsceneOrchestrator : MonoBehaviour
 
     [Header("Participants / Systems")]
     public GameObject shieldProp;
-    public Transform kidHandR;
     public EnemySpawner spawner;
     public Animator kidAnim;
     public Animator momAnim;
@@ -69,14 +68,10 @@ public class CutsceneOrchestrator : MonoBehaviour
     // ===== Timeline Signals (call these from Signal Receiver) =====
     public void Signal_ShieldGive()
     {
-        if (shieldProp && kidHandR)
+        if (shieldProp)
         {
             shieldProp.SetActive(true);
-            shieldProp.transform.SetParent(kidHandR);
-            shieldProp.transform.localPosition = Vector3.zero;
-            shieldProp.transform.localRotation = Quaternion.identity;
         }
-        if (kidAnim) kidAnim.SetTrigger("ReceiveShield");
     }
 
     public void Signal_SpawnMonsters()
