@@ -84,7 +84,7 @@ public class Break_Ghost : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // Detect hits from Spear or Axe
-        if (collision.gameObject.CompareTag("Spear") || collision.gameObject.CompareTag("Axe"))
+        if (collision.gameObject.CompareTag("Spear"))
         {
             break_Ghost();
         }

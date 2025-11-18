@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,8 +8,11 @@ public class GameManager : MonoBehaviour
 
     [Header("Score Settings")]
     public int currentScore = 0;
-    public int scoreToWin = 5;            // Number of ghosts to destroy
-    public string sceneToLoad = "MainMenu"; // Scene to load when threshold reached
+    public int scoreToWin = 5;
+    public string sceneToLoad = "MainMenu";
+
+    [Header("UI Elements")]
+    public TMP_Text scoreText;  // Assign your world-space TMP text here
 
     void Awake()
     {
@@ -16,12 +20,14 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Optional: keep across scenes
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
+
+        UpdateScoreText();
     }
 
     public void AddScore(int points)
@@ -29,13 +35,25 @@ public class GameManager : MonoBehaviour
         currentScore += points;
         Debug.Log("Score: " + currentScore);
 
+        // Update UI safely
+        UpdateScoreText();
+
         if (currentScore >= scoreToWin)
         {
             LoadNextScene();
         }
     }
 
-    void LoadNextScene()
+    private void UpdateScoreText()
+    {
+        if (scoreText != null)
+        {
+            // Overwrite previous text
+            scoreText.text = $"{currentScore}";
+        }
+    }
+
+    private void LoadNextScene()
     {
         SceneManager.LoadScene(sceneToLoad);
     }

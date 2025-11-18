@@ -1,55 +1,55 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    [Header("UI Elements")]
-    public GameObject pauseMenuUI;       // World-space canvas for pause menu
-    public GameObject startButton;       // Start/Resume button
-    public GameObject settingsButton;    // Settings button
-    public GameObject quitButton;        // Quit button
+    public GameObject pauseMenu;
+    public bool isPaused = false;
 
-    private bool isPaused = false;
+    [Header("VR Interaction Objects")]
+    public GameObject surface;
+    public GameObject interactionArea;
+
+    void Start()
+    {
+        // Ensure everything is hidden at start
+        if (pauseMenu != null) pauseMenu.SetActive(false);
+        if (surface != null) surface.SetActive(false);
+        if (interactionArea != null) interactionArea.SetActive(false);
+    }
 
     void Update()
     {
-        // Check for Start/Menu button on right Touch controller
+        // Press Oculus Menu Button to pause
         if (OVRInput.GetDown(OVRInput.Button.Start))
         {
-            if (isPaused) Resume();
-            else Pause();
+            TogglePause();
         }
     }
 
-    public void Pause()
+    public void TogglePause()
     {
-        // Enable the pause menu and its buttons
-        if (pauseMenuUI) pauseMenuUI.SetActive(true);
-        if (startButton) startButton.SetActive(true);
-        if (settingsButton) settingsButton.SetActive(true);
-        if (quitButton) quitButton.SetActive(true);
+        isPaused = !isPaused;
+        if (pauseMenu != null) pauseMenu.SetActive(isPaused);
+        if (surface != null) surface.SetActive(isPaused);
+        if (interactionArea != null) interactionArea.SetActive(isPaused);
 
-        // Stop the game time
-        Time.timeScale = 0f;
-        isPaused = true;
+        Time.timeScale = isPaused ? 0 : 1;
     }
 
-    public void Resume()
+    public void ResumeGame()
     {
-        // Disable the pause menu and its buttons
-        if (pauseMenuUI) pauseMenuUI.SetActive(false);
-        if (startButton) startButton.SetActive(false);
-        if (settingsButton) settingsButton.SetActive(false);
-        if (quitButton) quitButton.SetActive(false);
-
-        // Resume game time
-        Time.timeScale = 1f;
         isPaused = false;
+
+        if (pauseMenu != null) pauseMenu.SetActive(false);
+        if (surface != null) surface.SetActive(false);
+        if (interactionArea != null) interactionArea.SetActive(false);
+
+        Time.timeScale = 1;
     }
 
     public void QuitGame()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu"); // Change this to your main menu scene name
+        Time.timeScale = 1;
+        Application.Quit();
     }
 }
