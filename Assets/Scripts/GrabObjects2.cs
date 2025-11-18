@@ -1,6 +1,7 @@
 using UnityEngine;
+using System.Collections;
 
-public class GrabObjects : MonoBehaviour
+public class GrabObjects2 : MonoBehaviour
 {
     [Header("Right Hand Anchor")]
     public Transform rightHandAnchor;
@@ -15,6 +16,12 @@ public class GrabObjects : MonoBehaviour
     [Header("Auto-Return")]
     public string floorTag = "Floor";
     public float returnDelay = 0.5f;
+
+    [Header("Throw Tuning")]
+    public float throwPower = 0.15f;          // Impulse strength
+    public float torquePower = 0.05f;         // Angular impulse strength
+    public float maxThrowSpeed = 18f;         // Prevents superhuman throws
+    public float smoothing = 0.15f;           // Smoothing for controller velocity
 
     private Rigidbody rb;
     private bool isHeld = false;
@@ -38,18 +45,20 @@ public class GrabObjects : MonoBehaviour
     {
         if (isHeld && currentHand != null)
         {
-            // Calculate velocity safely
+            // --- Velocity (smoothed & safe) ---
             Vector3 deltaPos = currentHand.position - lastPosition;
-            if (Time.deltaTime > 0.0001f)
-                velocity = deltaPos / Time.deltaTime;
-            else
-                velocity = Vector3.zero;
 
-            // Prevent NaNs/Infs
+            Vector3 rawVel = Vector3.zero;
+            if (Time.deltaTime > 0.0001f)
+                rawVel = deltaPos / Time.deltaTime;
+
+            // Lerp smoothing
+            velocity = Vector3.Lerp(velocity, rawVel, 1f - smoothing);
+
             if (!IsValidVector(velocity))
                 velocity = Vector3.zero;
 
-            // Angular velocity calculation
+            // --- Angular velocity ---
             Quaternion deltaRotation = currentHand.rotation * Quaternion.Inverse(lastRotation);
             deltaRotation.ToAngleAxis(out float angle, out Vector3 axis);
             if (angle > 180f) angle -= 360f;
@@ -69,7 +78,7 @@ public class GrabObjects : MonoBehaviour
             if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
             {
                 Drop();
-                return; // Prevents Update from continuing in same frame
+                return; // Prevent continuing with null hand
             }
 
             // Follow hand
@@ -119,12 +128,15 @@ public class GrabObjects : MonoBehaviour
         {
             rb.isKinematic = false;
 
-            // Validate throwing velocity
+            // Validate and clamp velocity
             if (!IsValidVector(velocity)) velocity = Vector3.zero;
+            velocity = Vector3.ClampMagnitude(velocity, maxThrowSpeed);
+
             if (!IsValidVector(angularVelocity)) angularVelocity = Vector3.zero;
 
-            rb.linearVelocity = velocity;
-            rb.angularVelocity = angularVelocity;
+            // === REALISTIC IMPULSE-BASED THROW ===
+            rb.AddForce(velocity * throwPower, ForceMode.Impulse);
+            rb.AddTorque(angularVelocity * torquePower, ForceMode.Impulse);
         }
 
         currentHand = null;
@@ -138,7 +150,7 @@ public class GrabObjects : MonoBehaviour
         }
     }
 
-    private System.Collections.IEnumerator ReturnToHand()
+    private IEnumerator ReturnToHand()
     {
         yield return new WaitForSeconds(returnDelay);
 
@@ -151,7 +163,7 @@ public class GrabObjects : MonoBehaviour
         }
     }
 
-    // Validation helper
+    // Vector validation helper
     bool IsValidVector(Vector3 v)
     {
         return !(float.IsNaN(v.x) || float.IsInfinity(v.x) ||
