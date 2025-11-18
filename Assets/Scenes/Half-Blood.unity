@@ -8426,6 +8426,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 168442, guid: 36ebaa25b1c08964b99fdbb5a236580b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1412909618}
+    - targetCorrespondingSourceObject: {fileID: 168442, guid: 36ebaa25b1c08964b99fdbb5a236580b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1412909619}
     - targetCorrespondingSourceObject: {fileID: 194766, guid: 36ebaa25b1c08964b99fdbb5a236580b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1412909617}
@@ -8575,13 +8578,25 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 184bbd7a4e6a13b49bba4bb0bb8b64b3, type: 3}
+--- !u!114 &1412909619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412909613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e743f572b848d14fb198269c06b591b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneChangerFB
 --- !u!1001 &1419899650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11134,7 +11149,6 @@ MonoBehaviour:
   isPaused: 0
   surface: {fileID: 1881540197}
   interactionArea: {fileID: 1546117069}
-  healthBarCanvas: {fileID: 1938540068}
 --- !u!1 &1774778664
 GameObject:
   m_ObjectHideFlags: 0
