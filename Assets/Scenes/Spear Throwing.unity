@@ -10163,7 +10163,7 @@ MonoBehaviour:
   returnDelay: 0.5
   throwPower: 0.15
   torquePower: 0.05
-  maxThrowSpeed: 18
+  maxThrowSpeed: 5
   smoothing: 0.15
 --- !u!1001 &1735684164
 PrefabInstance:
