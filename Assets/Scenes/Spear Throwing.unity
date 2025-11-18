@@ -10099,13 +10099,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4860008033491129279, guid: 87a7691b577e73842977fe43683577b1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8264137675185652934, guid: 87a7691b577e73842977fe43683577b1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1733226804}
+    - targetCorrespondingSourceObject: {fileID: 8264137675185652934, guid: 87a7691b577e73842977fe43683577b1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1733226805}
   m_SourcePrefab: {fileID: 100100000, guid: 87a7691b577e73842977fe43683577b1, type: 3}
 --- !u!1 &1733226803 stripped
 GameObject:
@@ -10139,6 +10143,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 2
+--- !u!114 &1733226805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733226803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecef58aa86468eb4da3da7c30bfdf1d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrabObjects2
+  rightHandAnchor: {fileID: 1732362181}
+  grabRange: 0.2
+  rightPositionOffset: {x: 0, y: -0.2, z: 0}
+  rightRotationOffset: {x: 0, y: 0, z: 180}
+  floorTag: Floor
+  returnDelay: 0.5
+  throwPower: 0.15
+  torquePower: 0.05
+  maxThrowSpeed: 18
+  smoothing: 0.15
 --- !u!1001 &1735684164
 PrefabInstance:
   m_ObjectHideFlags: 0
