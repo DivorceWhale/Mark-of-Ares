@@ -4327,6 +4327,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &776537092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 776537094}
+  - component: {fileID: 776537093}
+  m_Layer: 0
+  m_Name: Music System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &776537093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776537092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8333b4ae0144c449ea7bbc023f7950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicSystem
+  musicTracks:
+  - trackName: Wind
+    clip: {fileID: 8300000, guid: f33faff658c0ea942a09e7202785365b, type: 3}
+    volume: 0
+    loop: 0
+    fadeInTime: 0
+    fadeOutTime: 0
+    intensityLevel: 0
+  - trackName: Squirrels
+    clip: {fileID: 8300000, guid: ee3d1da9d853e5f46b536ad7884b1727, type: 3}
+    volume: 0
+    loop: 1
+    fadeInTime: 0
+    fadeOutTime: 0
+    intensityLevel: 0
+  startingTrack: Squirrels
+  dynamicLayers: []
+  useDynamicMusic: 0
+  masterMusicVolume: 0.7
+  defaultFadeTime: 2
+  playOnStart: 1
+--- !u!4 &776537094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776537092}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.43, y: 0, z: -38.67}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &780432268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6462,6 +6527,82 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 471828, guid: 19682540d8a014522a319b1cf788aee2, type: 3}
   m_PrefabInstance: {fileID: 1098861237}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1110165198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1110165201}
+  - component: {fileID: 1110165200}
+  - component: {fileID: 1110165199}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1110165199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110165198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a7348bf2b2eb61469c1273e8938d893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  poolSize: 20
+  audioSourcePrefab: {fileID: 0}
+  expandable: 1
+  maxPoolSize: 50
+--- !u!114 &1110165200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110165198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4495afc9d88dabe4495d564bdeedd288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  sounds:
+  - name: Wind
+    clip: {fileID: 8300000, guid: f33faff658c0ea942a09e7202785365b, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Squirrels
+    clip: {fileID: 8300000, guid: ee3d1da9d853e5f46b536ad7884b1727, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+--- !u!4 &1110165201
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110165198}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 17.83114, y: 10.22945, z: 27.37589}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1133189731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11145,7 +11286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7ce6a681a1e3364f9614318aecc04fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  pauseMenu: {fileID: 1668756567}
+  pauseMenuCanvas: {fileID: 1668756567}
+  pauseMenu: {fileID: 910417513}
   isPaused: 0
   surface: {fileID: 1881540197}
   interactionArea: {fileID: 1546117069}
@@ -14292,3 +14434,5 @@ SceneRoots:
   - {fileID: 590426186}
   - {fileID: 928825777}
   - {fileID: 1773084039}
+  - {fileID: 1110165201}
+  - {fileID: 776537094}
