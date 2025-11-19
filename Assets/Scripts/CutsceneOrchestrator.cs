@@ -10,7 +10,7 @@ public class CutsceneOrchestrator : MonoBehaviour
     public PlayableDirector director;
     public SceneFader fader;
     public TMP_Text subtitleText;
-    public string nextSceneName = "CampHalfBlood";
+    //public string nextSceneName = "Half-Blood";
 
     [Header("Participants / Systems")]
     public GameObject shieldProp;
@@ -61,8 +61,8 @@ public class CutsceneOrchestrator : MonoBehaviour
     public void EndCutsceneAndLoad()
     {
         cutsceneRunning = false;
-        if (fader) fader.FadeTo(1f, 0.75f, () => SceneManager.LoadScene(nextSceneName));
-        else SceneManager.LoadScene(nextSceneName);
+        if (fader) fader.FadeTo(1f, 0.75f, () => SceneManager.LoadScene(2));
+        else SceneManager.LoadScene(2);
     }
 
     // ===== Timeline Signals (call these from Signal Receiver) =====
