@@ -5601,7 +5601,7 @@ GameObject:
   - component: {fileID: 928825776}
   - component: {fileID: 928825775}
   - component: {fileID: 928825774}
-  - component: {fileID: 928825773}
+  - component: {fileID: 928825778}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -5609,18 +5609,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &928825773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928825772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ace61dd7c6327c240be0e7db5729f610, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneChangerCTF
 --- !u!65 &928825774
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5713,6 +5701,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90.503, z: 0}
+--- !u!114 &928825778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928825772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e743f572b848d14fb198269c06b591b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneChangerFB
 --- !u!1001 &942351142
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8528,9 +8528,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 168442, guid: 36ebaa25b1c08964b99fdbb5a236580b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1412909618}
-    - targetCorrespondingSourceObject: {fileID: 168442, guid: 36ebaa25b1c08964b99fdbb5a236580b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1412909619}
     - targetCorrespondingSourceObject: {fileID: 194766, guid: 36ebaa25b1c08964b99fdbb5a236580b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1412909617}
@@ -8687,18 +8684,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 184bbd7a4e6a13b49bba4bb0bb8b64b3, type: 3}
---- !u!114 &1412909619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1412909613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e743f572b848d14fb198269c06b591b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneChangerFB
 --- !u!1001 &1419899650
 PrefabInstance:
   m_ObjectHideFlags: 0
