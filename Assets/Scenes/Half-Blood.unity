@@ -6610,7 +6610,7 @@ MonoBehaviour:
   musicTracks:
   - trackName: Wind
     clip: {fileID: 8300000, guid: f33faff658c0ea942a09e7202785365b, type: 3}
-    volume: 0.2
+    volume: 0.5
     loop: 0
     fadeInTime: 0
     fadeOutTime: 0
