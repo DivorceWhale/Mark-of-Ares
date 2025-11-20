@@ -24,6 +24,10 @@ public class CutsceneOrchestrator : MonoBehaviour
     public MomSimpleDeath momDeath;
     public FreezeCamera freezeCam;
 
+    [Header("Time Card (e.g., '3 Days Later...')")]
+    public CanvasGroup timeCardCg;             // assign the UI text's CanvasGroup
+    public float timeCardFadeInDuration = 1f;  // how fast the text fades in
+
     bool cutsceneRunning = false;
     bool isLoading = false;
     Coroutine loadRoutine;
@@ -131,8 +135,7 @@ public class CutsceneOrchestrator : MonoBehaviour
     public void Signal_ShieldGive()
     {
         if (shieldProp) shieldProp.SetActive(true);
-
-        // Optional: play give/receive animations if you hook them up
+        // Optional: triggers if you later hook up anims
         // if (momAnim) momAnim.SetTrigger("GiveShield");
         // if (kidAnim) kidAnim.SetTrigger("ReceiveShield");
     }
@@ -161,6 +164,39 @@ public class CutsceneOrchestrator : MonoBehaviour
             nextSceneName = sceneName;
 
         EndCutsceneAndLoad();
+    }
+
+    // NEW: fade to black + show "3 Days Later..."
+    public void Signal_FadeToBlackAndShowTimeCard()
+    {
+        // Fade the screen to black
+        if (fader)
+            fader.FadeTo(1f, fadeOutDuration);
+
+        // Fade in the time-card text over the black
+        if (timeCardCg)
+        {
+            // Ensure it starts invisible
+            timeCardCg.alpha = 0f;
+            timeCardCg.gameObject.SetActive(true);
+            StartCoroutine(FadeCanvasGroup(timeCardCg, 1f, timeCardFadeInDuration));
+        }
+    }
+
+    IEnumerator FadeCanvasGroup(CanvasGroup cg, float targetAlpha, float duration)
+    {
+        float startAlpha = cg.alpha;
+        float t = 0f;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float u = Mathf.Clamp01(t / duration);
+            cg.alpha = Mathf.Lerp(startAlpha, targetAlpha, u);
+            yield return null;
+        }
+
+        cg.alpha = targetAlpha;
     }
 
     // -------------------------------------------------------------
