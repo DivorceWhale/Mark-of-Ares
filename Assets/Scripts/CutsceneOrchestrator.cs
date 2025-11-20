@@ -62,7 +62,7 @@ public class CutsceneOrchestrator : MonoBehaviour
     {
         cutsceneRunning = false;
         if (fader) fader.FadeTo(1f, 0.75f, () => SceneManager.LoadScene(2));
-        else SceneManager.LoadScene(2);
+        else SceneManager.LoadScene("Half-Blood");
     }
 
     // ===== Timeline Signals (call these from Signal Receiver) =====
@@ -89,6 +89,7 @@ public class CutsceneOrchestrator : MonoBehaviour
     public void Signal_Teleport()
     {
         EndCutsceneAndLoad();
+   
     }
 
     // Subtitles (optional)
