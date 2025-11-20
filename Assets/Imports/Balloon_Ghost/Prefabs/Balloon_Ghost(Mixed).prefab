@@ -85,6 +85,8 @@ MonoBehaviour:
   ghost: {fileID: 2911597059970714854}
   pointsForGhost: 1
   floorTag: Floor
+  breakSound: Pop
+  floorImpactSound: 
 --- !u!54 &3777315659942775772
 Rigidbody:
   m_ObjectHideFlags: 0
