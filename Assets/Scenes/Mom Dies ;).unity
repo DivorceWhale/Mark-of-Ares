@@ -3128,6 +3128,7 @@ GameObject:
   - component: {fileID: 1460563349}
   - component: {fileID: 1460563353}
   - component: {fileID: 1460563352}
+  - component: {fileID: 1460563354}
   m_Layer: 0
   m_Name: Main Camera CinemachineBrain
   m_TagString: MainCamera
@@ -3176,7 +3177,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 50
+  field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -3202,8 +3203,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460563348}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11731496, y: 0.72607654, z: -0.12802683, w: 0.6653265}
-  m_LocalPosition: {x: -8, y: 5, z: 2}
+  m_LocalRotation: {x: 0.17293163, y: 0.41485357, z: -0.08063933, w: 0.8896564}
+  m_LocalPosition: {x: -0.6000004, y: 3, z: -2.1999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3285,6 +3286,19 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1460563354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460563348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19d2d36f81201a4d85977f5bd60d083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FreezeCamera
+  freeze: 0
 --- !u!1 &1465666326
 GameObject:
   m_ObjectHideFlags: 0
@@ -5373,6 +5387,7 @@ MonoBehaviour:
   kidAnim: {fileID: 760848180}
   momAnim: {fileID: 2104308141}
   momDeath: {fileID: 0}
+  freezeCam: {fileID: 1460563354}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

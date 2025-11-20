@@ -22,6 +22,7 @@ public class CutsceneOrchestrator : MonoBehaviour
     public Animator kidAnim;
     public Animator momAnim;
     public MomSimpleDeath momDeath;
+    public FreezeCamera freezeCam;
 
     bool cutsceneRunning = false;
     bool isLoading = false;
@@ -50,6 +51,9 @@ public class CutsceneOrchestrator : MonoBehaviour
     public void StartCutscene()
     {
         cutsceneRunning = true;
+
+        // Lock VR / camera look
+        if (freezeCam) freezeCam.freeze = true;
 
         if (fader)
         {
@@ -100,7 +104,10 @@ public class CutsceneOrchestrator : MonoBehaviour
 
     void LoadSceneNow()
     {
-        // Try scene name
+        // Re-enable camera look when leaving the cutscene
+        if (freezeCam) freezeCam.freeze = false;
+
+        // Try scene name first
         if (!string.IsNullOrEmpty(nextSceneName))
         {
             try
@@ -108,10 +115,13 @@ public class CutsceneOrchestrator : MonoBehaviour
                 SceneManager.LoadScene(nextSceneName);
                 return;
             }
-            catch { }
+            catch
+            {
+                // fall through to index
+            }
         }
 
-        // Fallback
+        // Fallback by build index
         SceneManager.LoadScene(fallbackSceneIndex);
     }
 
@@ -121,6 +131,10 @@ public class CutsceneOrchestrator : MonoBehaviour
     public void Signal_ShieldGive()
     {
         if (shieldProp) shieldProp.SetActive(true);
+
+        // Optional: play give/receive animations if you hook them up
+        // if (momAnim) momAnim.SetTrigger("GiveShield");
+        // if (kidAnim) kidAnim.SetTrigger("ReceiveShield");
     }
 
     public void Signal_SpawnMonsters()
@@ -130,7 +144,9 @@ public class CutsceneOrchestrator : MonoBehaviour
 
     public void Signal_MomDeath()
     {
-        if (momAnim) momAnim.SetTrigger("Death");
+        // Animator "Death" not needed if MomSimpleDeath handles the fall
+        // if (momAnim) momAnim.SetTrigger("Death");
+
         if (momDeath) momDeath.Die();
     }
 
