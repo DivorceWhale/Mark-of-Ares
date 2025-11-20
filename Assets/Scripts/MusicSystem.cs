@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class MusicSystem : MonoBehaviour
 {
@@ -66,6 +67,7 @@ public class MusicSystem : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             InitializeMusicSystem();
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
@@ -115,7 +117,14 @@ public class MusicSystem : MonoBehaviour
             PlayMusic(startingTrack);
         }
     }
-    
+
+    private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+    {
+        // Stop all music when a new scene loads (fades out using default fade)
+        StopMusic();
+    }
+
+
     void SetupDynamicLayers()
     {
         foreach (MusicLayer layer in dynamicLayers)
