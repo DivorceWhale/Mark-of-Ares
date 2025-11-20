@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Break_Ghost : MonoBehaviour
 {
@@ -12,6 +12,10 @@ public class Break_Ghost : MonoBehaviour
 
     [Header("Floor Detection")]
     public string floorTag = "Floor"; // Tag of the floor object
+
+    [Header("Audio")]
+    public string breakSound = "GhostBreak";        // plays when ghost breaks
+    public string floorImpactSound = "GhostImpact"; // plays when parts hit floor
 
     private bool isBroken = false;
     private Rigidbody[] partRigidbodies;
@@ -46,6 +50,10 @@ public class Break_Ghost : MonoBehaviour
 
         isBroken = true;
 
+        // Play break sound
+        if (!string.IsNullOrEmpty(breakSound))
+            AudioManager.Instance.Play(breakSound);
+
         if (ghost_Parts != null)
         {
             ghost_Parts.SetActive(true);
@@ -62,6 +70,10 @@ public class Break_Ghost : MonoBehaviour
     // Called by FloorCollision when any part hits the floor
     public void DestroyGhost()
     {
+        // Play floor impact sound
+        if (!string.IsNullOrEmpty(floorImpactSound))
+            AudioManager.Instance.Play(floorImpactSound);
+
         // Award points when ghost finally hits the floor
         if (GameManager.Instance != null && pointsForGhost > 0)
         {

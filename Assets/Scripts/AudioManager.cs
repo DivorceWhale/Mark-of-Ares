@@ -1,4 +1,4 @@
-// AudioManager.cs
+﻿// AudioManager.cs
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -84,5 +84,28 @@ public class AudioManager : MonoBehaviour
         {
             soundDictionary[name].source.volume = Mathf.Clamp01(volume);
         }
+    }
+
+    // -------------------------------------------------------
+    //  ✔ ADDED: Safe access wrappers for other scripts
+    // -------------------------------------------------------
+
+    public AudioSource GetSource(string name)
+    {
+        if (soundDictionary.ContainsKey(name))
+            return soundDictionary[name].source;
+
+        return null;
+    }
+
+    public bool TryGetSource(string name, out AudioSource source)
+    {
+        source = null;
+        if (soundDictionary.ContainsKey(name))
+        {
+            source = soundDictionary[name].source;
+            return true;
+        }
+        return false;
     }
 }
