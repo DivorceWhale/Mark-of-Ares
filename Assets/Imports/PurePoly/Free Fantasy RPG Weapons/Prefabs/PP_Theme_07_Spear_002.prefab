@@ -12,13 +12,14 @@ GameObject:
   - component: {fileID: 5644160800028512729}
   - component: {fileID: 7615834489367995667}
   - component: {fileID: 1296867916241497482}
-  - component: {fileID: 4860008033491129279}
+  - component: {fileID: 7065702563254652497}
+  - component: {fileID: 8841547235266775432}
   m_Layer: 0
   m_Name: PP_Theme_07_Spear_002
-  m_TagString: Untagged
+  m_TagString: Spear
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8789845333852905084
 Transform:
@@ -113,7 +114,34 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6143898996665494940, guid: 3ea12b315dfa3914d96d2432f1a9c444, type: 3}
---- !u!114 &4860008033491129279
+--- !u!54 &7065702563254652497
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8264137675185652934}
+  serializedVersion: 5
+  m_Mass: 0.01
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 2
+--- !u!114 &8841547235266775432
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,13 +150,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8264137675185652934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdc3f26b41398cb46bf331c18259bcc6, type: 3}
+  m_Script: {fileID: 11500000, guid: ecef58aa86468eb4da3da7c30bfdf1d2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GrabObjects
+  m_EditorClassIdentifier: Assembly-CSharp::GrabObjects2
   rightHandAnchor: {fileID: 0}
-  leftHandAnchor: {fileID: 0}
   grabRange: 0.2
-  rightPositionOffset: {x: 0, y: -0.5, z: 0}
-  rightRotationOffset: {x: 0, y: 0, z: 0}
-  leftPositionOffset: {x: 0, y: -0.5, z: 0}
-  leftRotationOffset: {x: 0, y: 0, z: 0}
+  rightPositionOffset: {x: 0, y: -0.2, z: 0}
+  rightRotationOffset: {x: 0, y: 0, z: 180}
+  floorTag: Floor
+  returnDelay: 0.1
+  throwPower: 0.15
+  torquePower: 0.05
+  maxThrowSpeed: 1
+  smoothing: 0.15
