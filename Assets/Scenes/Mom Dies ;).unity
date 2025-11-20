@@ -5365,9 +5365,9 @@ MonoBehaviour:
   director: {fileID: 1232807707}
   fader: {fileID: 1140865657}
   subtitleText: {fileID: 0}
-  nextSceneName: CreditsScene
+  nextSceneName: Half-Blood
   fallbackSceneIndex: 2
-  fadeOutDuration: 0.75
+  fadeOutDuration: 0
   shieldProp: {fileID: 1292212568}
   spawner: {fileID: 0}
   kidAnim: {fileID: 760848180}
