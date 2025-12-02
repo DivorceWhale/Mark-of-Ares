@@ -4417,6 +4417,7 @@ GameObject:
   - component: {fileID: 1344414063}
   - component: {fileID: 1344414062}
   - component: {fileID: 1344414067}
+  - component: {fileID: 1344414068}
   m_Layer: 0
   m_Name: Y Moving Block
   m_TagString: MovingPlatform
@@ -4543,6 +4544,22 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1344414068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344414061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22206317614a49f48b0b8cf9cb67b2e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlatformMover
+  moveDirection: {x: 0, y: 10, z: 0}
+  moveDistance: 10
+  moveSpeed: 2
+  pingPong: 1
 --- !u!1 &1349590243
 GameObject:
   m_ObjectHideFlags: 0
@@ -4706,6 +4723,7 @@ GameObject:
   - component: {fileID: 1493784478}
   - component: {fileID: 1493784477}
   - component: {fileID: 1493784482}
+  - component: {fileID: 1493784483}
   m_Layer: 0
   m_Name: X Moving Block
   m_TagString: MovingPlatform
@@ -4832,6 +4850,22 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1493784483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493784476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22206317614a49f48b0b8cf9cb67b2e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlatformMover
+  moveDirection: {x: 1, y: 0, z: 0}
+  moveDistance: 10
+  moveSpeed: 2
+  pingPong: 1
 --- !u!1 &1556956191
 GameObject:
   m_ObjectHideFlags: 0
