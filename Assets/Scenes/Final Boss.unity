@@ -5232,7 +5232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a799b8203dc8214c9c5b19dd56b47a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationRelay
-  weapon: {fileID: 0}
+  weapon: {fileID: 643040609}
 --- !u!195 &1383967562
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5273,7 +5273,7 @@ MonoBehaviour:
   attackRange: 3
   attackCooldown: 1.5
   animator: {fileID: 1383967559}
-  weapon: {fileID: 0}
+  weapon: {fileID: 643040609}
 --- !u!1 &1388192891
 GameObject:
   m_ObjectHideFlags: 0
