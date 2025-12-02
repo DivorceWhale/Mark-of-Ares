@@ -3334,8 +3334,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+      - m_Target: {fileID: 1392628664}
+        m_TargetAssemblyTypeName: pauseMenuC, Assembly-CSharp
         m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
@@ -3535,8 +3535,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+      - m_Target: {fileID: 1392628664}
+        m_TargetAssemblyTypeName: pauseMenuC, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -4898,7 +4898,6 @@ MonoBehaviour:
   maxThrowSpeed: 1
   smoothing: 0.15
   damage: 10
-  damageCollider: {fileID: 945221771}
 --- !u!54 &945221766
 Rigidbody:
   m_ObjectHideFlags: 0
