@@ -1504,7 +1504,7 @@ GameObject:
   - component: {fileID: 1333119224}
   - component: {fileID: 1333119223}
   - component: {fileID: 1333119222}
-  - component: {fileID: 1333119225}
+  - component: {fileID: 1333119226}
   m_Layer: 0
   m_Name: Audio Manager
   m_TagString: Untagged
@@ -1541,12 +1541,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   sounds:
-  - name: Main Menu
+  - name: Main Menu Music
     clip: {fileID: 8300000, guid: f886d533cc38fed448e36971d4ebe16c, type: 3}
-    volume: 0
+    volume: 1
     pitch: 0
     loop: 0
-    playOnAwake: 0
+    playOnAwake: 1
     source: {fileID: 0}
 --- !u!4 &1333119224
 Transform:
@@ -1563,7 +1563,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1333119225
+--- !u!114 &1333119226
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1572,23 +1572,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1333119221}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f8333b4ae0144c449ea7bbc023f7950, type: 3}
+  m_Script: {fileID: 11500000, guid: 770f472833bedc644b23a2ac933f908e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MusicSystem
-  musicTracks:
-  - trackName: Main Menu
-    clip: {fileID: 8300000, guid: f886d533cc38fed448e36971d4ebe16c, type: 3}
-    volume: 1
-    loop: 0
-    fadeInTime: 0
-    fadeOutTime: 0
-    intensityLevel: 0
-  startingTrack: Main Menu
-  dynamicLayers: []
-  useDynamicMusic: 0
-  masterMusicVolume: 0.7
-  defaultFadeTime: 2
-  playOnStart: 1
+  m_EditorClassIdentifier: '::'
+  MainMenu: Main Menu Music
+  HalfBlood: Half-Blood
+  SpearThrowing: SpearThrowing
+  FinalBoss: Final Boss
 --- !u!1 &1337743506
 GameObject:
   m_ObjectHideFlags: 0

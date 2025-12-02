@@ -7,7 +7,7 @@ public class SceneChangerDUEL : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("1v1 Deuls");
+            SceneManager.LoadScene("1v1 Duels");
         }
     }
 }
