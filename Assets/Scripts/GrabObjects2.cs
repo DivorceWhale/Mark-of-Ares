@@ -18,10 +18,14 @@ public class GrabObjects2 : MonoBehaviour
     public float returnDelay = 0.5f;
 
     [Header("Throw Tuning")]
-    public float throwPower = 0.15f;          // Impulse strength
-    public float torquePower = 0.05f;         // Angular impulse strength
-    public float maxThrowSpeed = 18f;         // Prevents superhuman throws
-    public float smoothing = 0.15f;           // Smoothing for controller velocity
+    public float throwPower = 0.15f;
+    public float torquePower = 0.05f;
+    public float maxThrowSpeed = 18f;
+    public float smoothing = 0.15f;
+
+    [Header("Damage")]
+    public int damage = 10;          // Damage dealt to enemies
+    public Collider damageCollider;       // Trigger collider for damage only
 
     private Rigidbody rb;
     private bool isHeld = false;
@@ -30,7 +34,6 @@ public class GrabObjects2 : MonoBehaviour
     private Vector3 currentPosOffset;
     private Vector3 currentRotOffset;
 
-    // For throwing
     private Vector3 lastPosition;
     private Quaternion lastRotation;
     private Vector3 velocity;
@@ -45,68 +48,64 @@ public class GrabObjects2 : MonoBehaviour
     {
         if (isHeld && currentHand != null)
         {
-            // --- Velocity (smoothed & safe) ---
-            Vector3 deltaPos = currentHand.position - lastPosition;
-
-            Vector3 rawVel = Vector3.zero;
-            if (Time.deltaTime > 0.0001f)
-                rawVel = deltaPos / Time.deltaTime;
-
-            // Lerp smoothing
-            velocity = Vector3.Lerp(velocity, rawVel, 1f - smoothing);
-
-            if (!IsValidVector(velocity))
-                velocity = Vector3.zero;
-
-            // --- Angular velocity ---
-            Quaternion deltaRotation = currentHand.rotation * Quaternion.Inverse(lastRotation);
-            deltaRotation.ToAngleAxis(out float angle, out Vector3 axis);
-            if (angle > 180f) angle -= 360f;
-
-            if (Time.deltaTime > 0.0001f)
-                angularVelocity = axis * (angle * Mathf.Deg2Rad / Time.deltaTime);
-            else
-                angularVelocity = Vector3.zero;
-
-            if (!IsValidVector(angularVelocity))
-                angularVelocity = Vector3.zero;
-
-            lastPosition = currentHand.position;
-            lastRotation = currentHand.rotation;
-
-            // Drop trigger
-            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
-            {
-                Drop();
-                return; // Prevent continuing with null hand
-            }
-
-            // Follow hand
-            transform.position = currentHand.position + currentHand.TransformVector(currentPosOffset);
-            transform.rotation = currentHand.rotation * Quaternion.Euler(currentRotOffset);
+            HandleMovement();
         }
         else
         {
-            // Try grab
-            if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
-            {
-                TryGrab(rightHandAnchor, rightPositionOffset, rightRotationOffset);
-            }
+            TryGrabInput();
         }
     }
 
-    void TryGrab(Transform hand, Vector3 posOffset, Vector3 rotOffset)
+    private void HandleMovement()
     {
-        if (hand == null) return;
+        // --- Velocity (smoothed & safe) ---
+        Vector3 deltaPos = currentHand.position - lastPosition;
 
-        float dist = Vector3.Distance(transform.position, hand.position);
-        if (dist <= grabRange)
+        Vector3 rawVel = Vector3.zero;
+        if (Time.deltaTime > 0.0001f)
+            rawVel = deltaPos / Time.deltaTime;
+
+        velocity = Vector3.Lerp(velocity, rawVel, 1f - smoothing);
+        if (!IsValidVector(velocity)) velocity = Vector3.zero;
+
+        // --- Angular velocity ---
+        Quaternion deltaRotation = currentHand.rotation * Quaternion.Inverse(lastRotation);
+        deltaRotation.ToAngleAxis(out float angle, out Vector3 axis);
+        if (angle > 180f) angle -= 360f;
+
+        if (Time.deltaTime > 0.0001f)
+            angularVelocity = axis * (angle * Mathf.Deg2Rad / Time.deltaTime);
+        else
+            angularVelocity = Vector3.zero;
+
+        if (!IsValidVector(angularVelocity)) angularVelocity = Vector3.zero;
+
+        lastPosition = currentHand.position;
+        lastRotation = currentHand.rotation;
+
+        // Drop input
+        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
         {
-            Grab(hand, posOffset, rotOffset);
+            Drop();
+            return;
+        }
+
+        // Follow hand
+        transform.position = currentHand.position + currentHand.TransformVector(currentPosOffset);
+        transform.rotation = currentHand.rotation * Quaternion.Euler(currentRotOffset);
+    }
+
+    private void TryGrabInput()
+    {
+        if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
+        {
+            float dist = Vector3.Distance(transform.position, rightHandAnchor.position);
+            if (dist <= grabRange)
+                Grab(rightHandAnchor, rightPositionOffset, rightRotationOffset);
         }
     }
 
-    void Grab(Transform hand, Vector3 posOffset, Vector3 rotOffset)
+    private void Grab(Transform hand, Vector3 posOffset, Vector3 rotOffset)
     {
         isHeld = true;
         currentHand = hand;
@@ -120,7 +119,7 @@ public class GrabObjects2 : MonoBehaviour
         lastRotation = hand.rotation;
     }
 
-    void Drop()
+    private void Drop()
     {
         isHeld = false;
 
@@ -128,13 +127,11 @@ public class GrabObjects2 : MonoBehaviour
         {
             rb.isKinematic = false;
 
-            // Validate and clamp velocity
             if (!IsValidVector(velocity)) velocity = Vector3.zero;
             velocity = Vector3.ClampMagnitude(velocity, maxThrowSpeed);
 
             if (!IsValidVector(angularVelocity)) angularVelocity = Vector3.zero;
 
-            // === REALISTIC IMPULSE-BASED THROW ===
             rb.AddForce(velocity * throwPower, ForceMode.Impulse);
             rb.AddTorque(angularVelocity * torquePower, ForceMode.Impulse);
         }
@@ -144,9 +141,18 @@ public class GrabObjects2 : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // Auto-return to hand
         if (!isHeld && collision.gameObject.CompareTag(floorTag))
         {
             StartCoroutine(ReturnToHand());
+        }
+
+        // Damage enemies
+        EnemyHealth enemy = collision.collider.GetComponent<EnemyHealth>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(damage);
+            Debug.Log("Enemy hit for " + damage + " damage!");
         }
     }
 
@@ -163,7 +169,6 @@ public class GrabObjects2 : MonoBehaviour
         }
     }
 
-    // Vector validation helper
     bool IsValidVector(Vector3 v)
     {
         return !(float.IsNaN(v.x) || float.IsInfinity(v.x) ||

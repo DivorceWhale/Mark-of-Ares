@@ -1,5 +1,5 @@
-﻿// AudioManager.cs
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
@@ -17,24 +17,30 @@ public class AudioManager : MonoBehaviour
         public float pitch = 1f;
         public bool loop = false;
         public bool playOnAwake = false;
-        [HideInInspector]
-        public AudioSource source;
+
+        [HideInInspector] public AudioSource source;
     }
 
     public Sound[] sounds;
+
     private Dictionary<string, Sound> soundDictionary;
+
+    // The currently playing music track
+    private AudioSource currentMusicSource;
 
     void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else
         {
             Destroy(gameObject);
             return;
         }
 
-        DontDestroyOnLoad(gameObject);
         InitializeSounds();
     }
 
@@ -51,61 +57,111 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
             s.source.playOnAwake = s.playOnAwake;
 
+
+            // 🔥 VR FIX: Force 2D audio so Meta Spatializer doesn’t kill volume
+            s.source.spatialBlend = 0f;
+
             soundDictionary[s.name] = s;
 
             if (s.playOnAwake)
+            {
+                currentMusicSource = s.source;
                 s.source.Play();
+            }
         }
     }
 
+    // -------------------------------------------------------
+    // PLAY SOUND (SFX)
+    // -------------------------------------------------------
     public void Play(string name)
     {
-        if (soundDictionary.ContainsKey(name))
+        if (soundDictionary.TryGetValue(name, out Sound s))
         {
-            soundDictionary[name].source.Play();
+            if (!s.loop)
+            {
+                s.source.PlayOneShot(s.clip, s.volume);
+            }
+            else
+            {
+                s.source.Play();
+            }
         }
         else
         {
-            Debug.LogWarning("Sound: " + name + " not found!");
+            Debug.LogWarning("Sound not found: " + name);
+        }
+    }
+
+    // -------------------------------------------------------
+    // PLAY MUSIC WITH FADE + STOP CURRENT MUSIC
+    // -------------------------------------------------------
+    public void PlayMusic(string name, float fadeTime = 1f)
+    {
+        if (!soundDictionary.TryGetValue(name, out Sound newSound))
+        {
+            Debug.LogWarning("Music not found: " + name);
+            return;
+        }
+
+        // If the same music is already playing, don't restart it
+        if (currentMusicSource == newSound.source)
+            return;
+
+        StartCoroutine(FadeMusic(newSound.source, fadeTime));
+    }
+
+    IEnumerator FadeMusic(AudioSource newMusic, float fadeTime)
+    {
+        AudioSource oldMusic = currentMusicSource;
+        currentMusicSource = newMusic;
+
+        // Fade out old music
+        if (oldMusic != null)
+        {
+            float startVol = oldMusic.volume;
+            float t = 0;
+
+            while (t < fadeTime)
+            {
+                t += Time.deltaTime;
+                oldMusic.volume = Mathf.Lerp(startVol, 0, t / fadeTime);
+                yield return null;
+            }
+
+            oldMusic.Stop();
+            oldMusic.volume = startVol;
+        }
+
+        // Start new music
+        newMusic.volume = 0f;
+        newMusic.Play();
+
+        // Fade in new music
+        float targetVol = soundDictionary[newMusic.clip.name].volume;
+        float time = 0;
+
+        while (time < fadeTime)
+        {
+            time += Time.deltaTime;
+            newMusic.volume = Mathf.Lerp(0, targetVol, time / fadeTime);
+            yield return null;
         }
     }
 
     public void Stop(string name)
     {
-        if (soundDictionary.ContainsKey(name))
+        if (soundDictionary.TryGetValue(name, out Sound s))
         {
-            soundDictionary[name].source.Stop();
+            s.source.Stop();
         }
     }
 
     public void SetVolume(string name, float volume)
     {
-        if (soundDictionary.ContainsKey(name))
+        if (soundDictionary.TryGetValue(name, out Sound s))
         {
-            soundDictionary[name].source.volume = Mathf.Clamp01(volume);
+            s.source.volume = Mathf.Clamp01(volume);
         }
-    }
-
-    // -------------------------------------------------------
-    //  ✔ ADDED: Safe access wrappers for other scripts
-    // -------------------------------------------------------
-
-    public AudioSource GetSource(string name)
-    {
-        if (soundDictionary.ContainsKey(name))
-            return soundDictionary[name].source;
-
-        return null;
-    }
-
-    public bool TryGetSource(string name, out AudioSource source)
-    {
-        source = null;
-        if (soundDictionary.ContainsKey(name))
-        {
-            source = soundDictionary[name].source;
-            return true;
-        }
-        return false;
     }
 }
