@@ -1586,9 +1586,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 338566171}
+      - m_Target: {fileID: 1773084041}
         m_TargetAssemblyTypeName: DestroyCanvasButton, Assembly-CSharp
-        m_MethodName: DestroyCanvas
+        m_MethodName: HideObjects
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2164,7 +2164,6 @@ GameObject:
   - component: {fileID: 338566166}
   - component: {fileID: 338566165}
   - component: {fileID: 338566164}
-  - component: {fileID: 338566171}
   m_Layer: 3
   m_Name: Guide
   m_TagString: Untagged
@@ -2337,18 +2336,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &338566171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338566162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c30fd848a60613479a573eab3698e0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DestroyCanvasButton
 --- !u!1001 &345288607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13445,6 +13432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1773084039}
   - component: {fileID: 1773084040}
+  - component: {fileID: 1773084041}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -13484,6 +13472,22 @@ MonoBehaviour:
   isPaused: 0
   surface: {fileID: 1881540197}
   interactionArea: {fileID: 1546117069}
+--- !u!114 &1773084041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773084038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c30fd848a60613479a573eab3698e0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroyCanvasButton
+  canvasToHide: {fileID: 338566162}
+  surfaceToHide: {fileID: 1028050801}
+  interactionAreaToHide: {fileID: 515658590}
+  splashScreenToHide: {fileID: 530085335}
 --- !u!1 &1774778664
 GameObject:
   m_ObjectHideFlags: 0
