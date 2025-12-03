@@ -4541,7 +4541,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -4583,7 +4583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4effb497bc2ba084ebd00318117f21d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  maxHealth: 50
+  maxHealth: 100
   sceneToLoad: Half-Blood
 --- !u!136 &871980668
 CapsuleCollider:
@@ -4600,7 +4600,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -4814,7 +4814,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8789845333852905084, guid: 87a7691b577e73842977fe43683577b1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3780847
+      value: -1.361
       objectReference: {fileID: 0}
     - target: {fileID: 8789845333852905084, guid: 87a7691b577e73842977fe43683577b1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4890,13 +4890,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabObjects2
   rightHandAnchor: {fileID: 612646935}
   leftHandAnchor: {fileID: 389662206}
-  grabRange: 0.2
+  grabRange: 1
   rightPositionOffset: {x: 0, y: -0.2, z: 0}
   rightRotationOffset: {x: 0, y: 0, z: 0}
   leftPositionOffset: {x: 0, y: 0, z: 0}
   leftRotationOffset: {x: 0, y: 0, z: 0}
   floorTag: Floor
-  returnDelay: 0
+  returnDelay: 0.1
   throwPower: 0.15
   torquePower: 0.05
   maxThrowSpeed: 1
@@ -4929,7 +4929,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &945221771
 MeshCollider:
   m_ObjectHideFlags: 0

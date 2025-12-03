@@ -11245,7 +11245,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!114 &1733226805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11259,19 +11259,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrabObjects2
   rightHandAnchor: {fileID: 1732362181}
-  leftHandAnchor: {fileID: 0}
-  grabRange: 0.2
+  leftHandAnchor: {fileID: 1671178132}
+  grabRange: 1
   rightPositionOffset: {x: 0, y: -0.2, z: 0}
   rightRotationOffset: {x: 0, y: 0, z: 180}
   leftPositionOffset: {x: 0, y: 0, z: 0}
   leftRotationOffset: {x: 0, y: 0, z: 0}
   floorTag: Floor
-  returnDelay: 0.5
+  returnDelay: 0.1
   throwPower: 0.15
   torquePower: 0.05
   maxThrowSpeed: 1
   smoothing: 0.15
   damage: 10
+  damageTrigger: {fileID: 0}
 --- !u!65 &1733226806
 BoxCollider:
   m_ObjectHideFlags: 0
