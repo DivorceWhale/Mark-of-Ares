@@ -5513,11 +5513,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2389191213126284287, guid: ad443ad961f8e1a40a4e1e251c7f5c9c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.224
+      value: 15.402
       objectReference: {fileID: 0}
     - target: {fileID: 2389191213126284287, guid: ad443ad961f8e1a40a4e1e251c7f5c9c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.302
+      value: 25.307
       objectReference: {fileID: 0}
     - target: {fileID: 2389191213126284287, guid: ad443ad961f8e1a40a4e1e251c7f5c9c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5555,43 +5555,51 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6336010466647822748, guid: ad443ad961f8e1a40a4e1e251c7f5c9c, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 3054509356080965957, guid: ad443ad961f8e1a40a4e1e251c7f5c9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1785251314}
+    - targetCorrespondingSourceObject: {fileID: 3054509356080965957, guid: ad443ad961f8e1a40a4e1e251c7f5c9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1785251313}
-    - targetCorrespondingSourceObject: {fileID: 6336010466647822748, guid: ad443ad961f8e1a40a4e1e251c7f5c9c, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 3054509356080965957, guid: ad443ad961f8e1a40a4e1e251c7f5c9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1785251312}
-    - targetCorrespondingSourceObject: {fileID: 6336010466647822748, guid: ad443ad961f8e1a40a4e1e251c7f5c9c, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 3054509356080965957, guid: ad443ad961f8e1a40a4e1e251c7f5c9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1785251311}
   m_SourcePrefab: {fileID: 100100000, guid: ad443ad961f8e1a40a4e1e251c7f5c9c, type: 3}
 --- !u!1 &1785251310 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 6336010466647822748, guid: ad443ad961f8e1a40a4e1e251c7f5c9c, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3054509356080965957, guid: ad443ad961f8e1a40a4e1e251c7f5c9c, type: 3}
   m_PrefabInstance: {fileID: 1785251309}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1785251311
-MeshCollider:
+--- !u!114 &1785251311
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785251310}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: ad1ae7cb06be8964fa5e4f29f6291777, type: 3}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecef58aa86468eb4da3da7c30bfdf1d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrabObjects2
+  rightHandAnchor: {fileID: 0}
+  leftHandAnchor: {fileID: 0}
+  grabRange: 0.2
+  rightPositionOffset: {x: 0, y: 0, z: 0}
+  rightRotationOffset: {x: 0, y: 0, z: 0}
+  leftPositionOffset: {x: 0, y: 0, z: 0}
+  leftRotationOffset: {x: 0, y: 0, z: 0}
+  floorTag: Floor
+  returnDelay: 0.5
+  throwPower: 0.15
+  torquePower: 0.05
+  maxThrowSpeed: 18
+  smoothing: 0.15
+  damage: 10
+  damageTrigger: {fileID: 0}
 --- !u!54 &1785251312
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5619,33 +5627,76 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1785251313
-MonoBehaviour:
+--- !u!64 &1785251313
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785251310}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!23 &1785251314
+MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785251310}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecef58aa86468eb4da3da7c30bfdf1d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GrabObjects2
-  rightHandAnchor: {fileID: 0}
-  leftHandAnchor: {fileID: 0}
-  grabRange: 0.2
-  rightPositionOffset: {x: 0, y: 0, z: 0}
-  rightRotationOffset: {x: 0, y: 0, z: 0}
-  leftPositionOffset: {x: 0, y: 0, z: 0}
-  leftRotationOffset: {x: 0, y: 0, z: 0}
-  floorTag: Floor
-  returnDelay: 0.5
-  throwPower: 0.15
-  torquePower: 0.05
-  maxThrowSpeed: 18
-  smoothing: 0.15
-  damage: 10
-  damageTrigger: {fileID: 0}
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1844077042
 GameObject:
   m_ObjectHideFlags: 0
