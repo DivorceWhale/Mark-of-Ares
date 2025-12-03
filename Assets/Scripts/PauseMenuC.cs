@@ -53,7 +53,12 @@ public class pauseMenuC : MonoBehaviour
 
     public void QuitGame()
     {
+        // Reset the splash/canvas counter so it can appear next time
+        PlayerPrefs.SetInt("CanvasShowCount", 0);
+        PlayerPrefs.Save();
+
         Time.timeScale = 1;
         Application.Quit();
     }
+
 }
