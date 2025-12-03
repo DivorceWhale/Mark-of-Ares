@@ -366,7 +366,6 @@ GameObject:
   - component: {fileID: 94597134}
   - component: {fileID: 94597133}
   - component: {fileID: 94597132}
-  - component: {fileID: 94597131}
   m_Layer: 0
   m_Name: Lucian
   m_TagString: Player
@@ -374,22 +373,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &94597131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 94597130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de5bdc29f9841dd4c9bcd958d2ad7fae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SimpleFallRespawn
-  respawnPoint: {fileID: 0}
-  fallY: -10
-  healthBar: {fileID: 1662734617}
-  maxHealth: 100
 --- !u!114 &94597132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4533,6 +4516,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8979536952676561975, guid: 0d79204046abd4c49b61c1bd053f8c61, type: 3}
       insertIndex: -1
       addedObject: {fileID: 871980667}
+    - targetCorrespondingSourceObject: {fileID: 8979536952676561975, guid: 0d79204046abd4c49b61c1bd053f8c61, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 871980668}
   m_SourcePrefab: {fileID: 100100000, guid: 0d79204046abd4c49b61c1bd053f8c61, type: 3}
 --- !u!1 &871980659 stripped
 GameObject:
@@ -4612,6 +4598,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   maxHealth: 50
   sceneToLoad: Half-Blood
+--- !u!136 &871980668
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871980659}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.9796412
+  m_Direction: 1
+  m_Center: {x: -0, y: 0.86607444, z: -0}
 --- !u!1001 &927957668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4906,6 +4915,7 @@ MonoBehaviour:
   maxThrowSpeed: 1
   smoothing: 0.15
   damage: 10
+  damageTrigger: {fileID: 945221771}
 --- !u!54 &945221766
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7007,6 +7017,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605341188}
   m_CullTransparentMesh: 1
+--- !u!1 &1621407673 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3903482225804038116, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
+  m_PrefabInstance: {fileID: 1637204003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1621407679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621407673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5bdc29f9841dd4c9bcd958d2ad7fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  respawnPoint: {fileID: 0}
+  fallY: -10
+  healthBar: {fileID: 1662734617}
+  maxHealth: 100
+  deathSceneName: MainMenu
 --- !u!1001 &1623699189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7231,6 +7263,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4148778239110795873, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
       insertIndex: 1
       addedObject: {fileID: 1637204006}
+    - targetCorrespondingSourceObject: {fileID: 3903482225804038116, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1621407679}
   m_SourcePrefab: {fileID: 100100000, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
 --- !u!4 &1637204004 stripped
 Transform:
