@@ -2,29 +2,32 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public int damage = 10;                 // Damage per hit
-    public Collider weaponCollider;         // Trigger collider for hit detection
+    public int damage = 10;                 // Damage amount
+    public Collider weaponCollider;         // Trigger collider
 
-    private void Start()
+    private void Awake()
     {
+        // Auto-find if forgotten
+        if (weaponCollider == null)
+            weaponCollider = GetComponent<Collider>();
+
         if (weaponCollider != null)
             weaponCollider.enabled = false; // Off by default
+        else
+            Debug.LogError("Weapon has NO collider assigned!");
     }
 
-    // Called by Animation Event
     public void EnableDamage()
     {
         if (weaponCollider != null)
             weaponCollider.enabled = true;
     }
 
-    // Called by Animation Event
     public void DisableDamage()
     {
         if (weaponCollider != null)
             weaponCollider.enabled = false;
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -32,11 +35,11 @@ public class Weapon : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            PlayerHealth pl = other.GetComponent<PlayerHealth>();
-            if (pl != null)
+            PlayerHealth ph = other.GetComponent<PlayerHealth>();
+            if (ph != null)
             {
-                pl.TakeDamage(damage);
-                Debug.Log("Player hit for " + damage + " damage!");
+                ph.TakeDamage(damage);
+                Debug.Log("Player hit! Damage: " + damage);
             }
         }
     }

@@ -1,18 +1,21 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Respawn Settings")]
-    [Tooltip("Where the player will respawn.")]
     public Transform respawnPoint;
-    [Tooltip("Y position threshold that triggers respawn.")]
     public float fallY = -10f;
 
     [Header("Health Settings")]
-    public HealthBar healthBar;       // Reference to your HealthBar
-    public int maxHealth = 100;       // Maximum health
+    public HealthBar healthBar;
+    public int maxHealth = 100;
+
+    [Header("Death Scene")]
+    public string deathSceneName = "MainMenu";
 
     private int currentHealth;
+
 
     private void Start()
     {
@@ -23,19 +26,18 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        // Check if player fell below threshold
+
         if (transform.position.y < fallY)
         {
             Respawn();
-            RestoreHealth(); // Restore health on fall
+            RestoreHealth();
         }
     }
 
-    /// <summary>
-    /// Deals damage to the player and checks for death
-    /// </summary>
     public void TakeDamage(int damage)
     {
+        Debug.Log("Player took damage: " + damage);
+
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
@@ -43,24 +45,25 @@ public class PlayerHealth : MonoBehaviour
             healthBar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
-        {
             Die();
+        if (healthBar != null)
+        {
+            healthBar.SetHealth(currentHealth);
+            Debug.Log("Updating HealthBar: " + currentHealth);
         }
+        else
+        {
+            Debug.LogWarning("HealthBar reference is null!");
+        }
+
     }
 
-    /// <summary>
-    /// Handles player death
-    /// </summary>
     private void Die()
     {
-        Debug.Log("Player has died! Respawning...");
-        Respawn();
-        RestoreHealth();
+        Debug.Log("Player has died! Loading scene...");
+        SceneManager.LoadScene(deathSceneName);
     }
 
-    /// <summary>
-    /// Restores the player's health to max
-    /// </summary>
     private void RestoreHealth()
     {
         currentHealth = maxHealth;
@@ -68,9 +71,6 @@ public class PlayerHealth : MonoBehaviour
             healthBar.SetHealth(currentHealth);
     }
 
-    /// <summary>
-    /// Respawns the player at the respawn point and resets physics
-    /// </summary>
     private void Respawn()
     {
         if (respawnPoint == null)
@@ -79,22 +79,22 @@ public class PlayerHealth : MonoBehaviour
             return;
         }
 
-        // Show respawn UI if available
         var ui = FindObjectOfType<RiseAgainUI>();
         if (ui != null)
-            ui.Show("Rise again � keep going", 1.5f);
+            ui.Show("Rise again – keep going", 1.5f);
 
-        // Reset position and rotation
         transform.SetPositionAndRotation(respawnPoint.position, respawnPoint.rotation);
 
-        // Reset Rigidbody velocity
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb != null)
         {
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
-
-        Debug.Log("Player respawned.");
     }
+    public int CurrentHealth
+    {
+        get { return currentHealth; }
+    }
+
 }
