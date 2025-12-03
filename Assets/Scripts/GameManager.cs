@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,7 +23,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        // Singleton pattern
         if (Instance == null)
         {
             Instance = this;
@@ -41,8 +39,6 @@ public class GameManager : MonoBehaviour
     public void AddScore(int points)
     {
         currentScore += points;
-        Debug.Log("Score: " + currentScore);
-
         UpdateScoreText();
 
         if (currentScore >= scoreToWin)
@@ -59,38 +55,32 @@ public class GameManager : MonoBehaviour
 
     private void ShowNextSceneCanvas()
     {
-        // Instantiate canvas if it doesn't exist
+        // Instantiate the canvas if not already
         if (nextSceneCanvasInstance == null && nextSceneCanvasPrefab != null)
         {
             nextSceneCanvasInstance = Instantiate(nextSceneCanvasPrefab);
             nextSceneCanvasInstance.worldCamera = Camera.main;
+
+            // Make sure the button calls LoadNextScene
+            var button = nextSceneCanvasInstance.GetComponentInChildren<UnityEngine.UI.Button>();
+            if (button != null)
+                button.onClick.AddListener(LoadNextScene);
         }
 
+        // Show canvas & interaction objects
         if (nextSceneCanvasInstance != null)
             nextSceneCanvasInstance.gameObject.SetActive(true);
-
-        // Show interaction objects
-        if (surface != null)
-            surface.SetActive(true);
-        if (interactionArea != null)
-            interactionArea.SetActive(true);
-
-        // Pause the game while waiting for button click
-        Time.timeScale = 0f;
+        if (surface != null) surface.SetActive(true);
+        if (interactionArea != null) interactionArea.SetActive(true);
     }
 
-    // This method should be assigned to the Button's OnClick in the Canvas prefab
     public void LoadNextScene()
     {
-        Time.timeScale = 1f; // Resume game
+        // Hide canvas & interaction objects
         if (nextSceneCanvasInstance != null)
             nextSceneCanvasInstance.gameObject.SetActive(false);
-
-        // Hide interaction objects
-        if (surface != null)
-            surface.SetActive(false);
-        if (interactionArea != null)
-            interactionArea.SetActive(false);
+        if (surface != null) surface.SetActive(false);
+        if (interactionArea != null) interactionArea.SetActive(false);
 
         SceneManager.LoadScene(sceneToLoad);
     }
