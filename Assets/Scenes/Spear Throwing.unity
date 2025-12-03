@@ -11124,8 +11124,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1296867916241497482, guid: 87a7691b577e73842977fe43683577b1, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296867916241497482, guid: 87a7691b577e73842977fe43683577b1, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4860008033491129279, guid: 87a7691b577e73842977fe43683577b1, type: 3}
       propertyPath: rightHandAnchor
@@ -11206,6 +11210,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8264137675185652934, guid: 87a7691b577e73842977fe43683577b1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1733226805}
+    - targetCorrespondingSourceObject: {fileID: 8264137675185652934, guid: 87a7691b577e73842977fe43683577b1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1733226806}
   m_SourcePrefab: {fileID: 100100000, guid: 87a7691b577e73842977fe43683577b1, type: 3}
 --- !u!1 &1733226803 stripped
 GameObject:
@@ -11252,15 +11259,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrabObjects2
   rightHandAnchor: {fileID: 1732362181}
+  leftHandAnchor: {fileID: 0}
   grabRange: 0.2
   rightPositionOffset: {x: 0, y: -0.2, z: 0}
   rightRotationOffset: {x: 0, y: 0, z: 180}
+  leftPositionOffset: {x: 0, y: 0, z: 0}
+  leftRotationOffset: {x: 0, y: 0, z: 0}
   floorTag: Floor
   returnDelay: 0.5
   throwPower: 0.15
   torquePower: 0.05
   maxThrowSpeed: 1
   smoothing: 0.15
+  damage: 10
+--- !u!65 &1733226806
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733226803}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08975558, y: 1.7835104, z: 0.035932958}
+  m_Center: {x: 0.00007002801, y: 0.11572799, z: -0.00015003234}
 --- !u!1001 &1735684164
 PrefabInstance:
   m_ObjectHideFlags: 0

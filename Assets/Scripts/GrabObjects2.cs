@@ -28,8 +28,9 @@ public class GrabObjects2 : MonoBehaviour
     public float maxThrowSpeed = 18f;
     public float smoothing = 0.15f;
 
-    [Header("Damage")]
+    [Header("Damage Settings")]
     public int damage = 10;
+    public Collider damageTrigger;   // ← assign your mesh trigger here
 
     private Rigidbody rb;
     private bool isHeld = false;
@@ -44,7 +45,7 @@ public class GrabObjects2 : MonoBehaviour
     private Vector3 velocity;
     private Vector3 angularVelocity;
 
-    private bool hasBeenGrabbed = false;    // ★ NEW — prevents auto-return until grabbed once
+    private bool hasBeenGrabbed = false;
 
     void Start()
     {
@@ -65,7 +66,7 @@ public class GrabObjects2 : MonoBehaviour
 
     private void HandleMovement()
     {
-        // Calculate velocity safely
+        // Calculate safe velocity
         Vector3 deltaPos = currentHand.position - lastPosition;
         Vector3 rawVel = Time.deltaTime > 0.0001f ? deltaPos / Time.deltaTime : Vector3.zero;
         velocity = Vector3.Lerp(velocity, rawVel, 1f - smoothing);
@@ -93,7 +94,7 @@ public class GrabObjects2 : MonoBehaviour
 
     private void TryGrabInput()
     {
-        // ---- RIGHT HAND GRAB ----
+        // RIGHT HAND GRAB
         if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
         {
             if (Vector3.Distance(transform.position, rightHandAnchor.position) <= grabRange)
@@ -103,7 +104,7 @@ public class GrabObjects2 : MonoBehaviour
             }
         }
 
-        // ---- LEFT HAND GRAB ----
+        // LEFT HAND GRAB
         if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch))
         {
             if (Vector3.Distance(transform.position, leftHandAnchor.position) <= grabRange)
@@ -117,7 +118,7 @@ public class GrabObjects2 : MonoBehaviour
     private void Grab(Transform hand, Vector3 posOffset, Vector3 rotOffset)
     {
         isHeld = true;
-        hasBeenGrabbed = true;          // ★ NEW — enabling auto-return from this point onward
+        hasBeenGrabbed = true;
         currentHand = hand;
         currentPosOffset = posOffset;
         currentRotOffset = rotOffset;
@@ -132,29 +133,38 @@ public class GrabObjects2 : MonoBehaviour
     private void Drop()
     {
         isHeld = false;
-
         rb.isKinematic = false;
 
         velocity = Vector3.ClampMagnitude(velocity, maxThrowSpeed);
+
         rb.AddForce(velocity * throwPower, ForceMode.Impulse);
         rb.AddTorque(angularVelocity * torquePower, ForceMode.Impulse);
 
         currentHand = null;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    // ---------------------- DAMAGE FROM TRIGGER ----------------------
+    private void OnTriggerEnter(Collider other)
     {
-        // ★ NEW — Only return if object has been picked up at least once
-        if (hasBeenGrabbed && !isHeld && collision.gameObject.CompareTag(floorTag))
-        {
-            StartCoroutine(ReturnToLastHand());
-        }
+        // Make sure the trigger firing is the weapon's mesh trigger
+        if (other != damageTrigger)
+            return;
 
-        // Deal damage
-        EnemyHealth enemy = collision.collider.GetComponent<EnemyHealth>();
+        // Try to damage enemy
+        EnemyHealth enemy = other.GetComponent<EnemyHealth>();
         if (enemy != null)
         {
             enemy.TakeDamage(damage);
+        }
+    }
+
+    // ---------------------- PHYSICS COLLISION (floor, walls, etc.) ----------------------
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Only return after being grabbed once
+        if (hasBeenGrabbed && !isHeld && collision.gameObject.CompareTag(floorTag))
+        {
+            StartCoroutine(ReturnToLastHand());
         }
     }
 
@@ -164,10 +174,9 @@ public class GrabObjects2 : MonoBehaviour
 
         yield return new WaitForSeconds(returnDelay);
 
-        if (lastUsedHand == rightHandAnchor)
-            Grab(rightHandAnchor, rightPositionOffset, rightRotationOffset);
-        else
-            Grab(leftHandAnchor, leftPositionOffset, leftRotationOffset);
+        Grab(lastUsedHand,
+            lastUsedHand == rightHandAnchor ? rightPositionOffset : leftPositionOffset,
+            lastUsedHand == rightHandAnchor ? rightRotationOffset : leftRotationOffset);
 
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
