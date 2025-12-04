@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class GameManager : MonoBehaviour
     [Header("UI Settings")]
     public TMP_Text scoreText;               // Assign world-space TMP text
     public Canvas nextSceneCanvasPrefab;     // Assign a prefab with Canvas + Button
+
+    [Header("Other Canvases to Hide")]
+    public Canvas[] canvasesToHide;         // Assign any other canvases you want hidden
 
     [Header("VR Interaction Objects")]
     public GameObject surface;
@@ -55,19 +59,26 @@ public class GameManager : MonoBehaviour
 
     private void ShowNextSceneCanvas()
     {
-        // Instantiate the canvas if not already
+        // Hide other canvases
+        foreach (var canvas in canvasesToHide)
+        {
+            if (canvas != null)
+                canvas.gameObject.SetActive(false);
+        }
+
+        // Instantiate the next-scene canvas if not already
         if (nextSceneCanvasInstance == null && nextSceneCanvasPrefab != null)
         {
             nextSceneCanvasInstance = Instantiate(nextSceneCanvasPrefab);
             nextSceneCanvasInstance.worldCamera = Camera.main;
 
             // Make sure the button calls LoadNextScene
-            var button = nextSceneCanvasInstance.GetComponentInChildren<UnityEngine.UI.Button>();
+            var button = nextSceneCanvasInstance.GetComponentInChildren<Button>();
             if (button != null)
                 button.onClick.AddListener(LoadNextScene);
         }
 
-        // Show canvas & interaction objects
+        // Show next-scene canvas & VR objects
         if (nextSceneCanvasInstance != null)
             nextSceneCanvasInstance.gameObject.SetActive(true);
         if (surface != null) surface.SetActive(true);
@@ -76,7 +87,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextScene()
     {
-        // Hide canvas & interaction objects
+        // Hide next-scene canvas & VR objects
         if (nextSceneCanvasInstance != null)
             nextSceneCanvasInstance.gameObject.SetActive(false);
         if (surface != null) surface.SetActive(false);

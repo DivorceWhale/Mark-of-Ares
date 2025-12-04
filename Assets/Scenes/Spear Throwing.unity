@@ -3926,6 +3926,8 @@ MonoBehaviour:
   sceneToLoad: Half-Blood
   scoreText: {fileID: 1479005124}
   nextSceneCanvasPrefab: {fileID: 707930305}
+  canvasesToHide:
+  - {fileID: 397798907}
   surface: {fileID: 2141874792}
   interactionArea: {fileID: 2005062214}
 --- !u!4 &684922967
