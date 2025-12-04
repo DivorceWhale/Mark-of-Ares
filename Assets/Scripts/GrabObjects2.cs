@@ -146,15 +146,17 @@ public class GrabObjects2 : MonoBehaviour
     // ---------------------- DAMAGE FROM TRIGGER ----------------------
     private void OnTriggerEnter(Collider other)
     {
-        // Check if the object we hit has EnemyHealth
+        // Make sure the trigger firing is the weapon's mesh trigger
+        if (other != damageTrigger)
+            return;
+
+        // Try to damage enemy
         EnemyHealth enemy = other.GetComponent<EnemyHealth>();
         if (enemy != null)
         {
             enemy.TakeDamage(damage);
-            Debug.Log("Hit enemy for " + damage + " damage!");
         }
     }
-
 
     // ---------------------- PHYSICS COLLISION (floor, walls, etc.) ----------------------
     private void OnCollisionEnter(Collision collision)
