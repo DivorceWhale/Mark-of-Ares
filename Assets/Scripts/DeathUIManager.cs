@@ -49,7 +49,9 @@ public class DeathUIManager : MonoBehaviour
 
     public void EndGame()
     {
-        Debug.Log("Game Quit");
+        PlayerPrefs.SetInt("CanvasShowCount", 0);
+        PlayerPrefs.Save();
+        Time.timeScale = 1;
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
