@@ -5193,7 +5193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4effb497bc2ba084ebd00318117f21d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  maxHealth: 100
+  maxHealth: 50
   sceneToLoad: Half-Blood
   deathCanvas: {fileID: 354860879}
   surface: {fileID: 1243931121}
@@ -5506,9 +5506,9 @@ MonoBehaviour:
   leftHandAnchor: {fileID: 389662206}
   grabRange: 1
   rightPositionOffset: {x: 0, y: -0.2, z: 0}
-  rightRotationOffset: {x: 0, y: 0, z: 0}
-  leftPositionOffset: {x: 0, y: 0, z: 0}
-  leftRotationOffset: {x: 0, y: 0, z: 0}
+  rightRotationOffset: {x: 0, y: 0, z: 180}
+  leftPositionOffset: {x: 0, y: -0.2, z: 0}
+  leftRotationOffset: {x: 0, y: 0, z: 180}
   floorTag: Floor
   returnDelay: 0.1
   throwPower: 0.15
@@ -6162,6 +6162,30 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378688, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378690, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378692, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378694, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378696, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378698, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
     - target: {fileID: 3201316790093378700, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
       propertyPath: m_Name
       value: Gladiator Low Poly Arena
@@ -6170,7 +6194,87 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378702, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378704, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378706, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378708, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378710, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
     - target: {fileID: 3201316790093378712, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378714, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378716, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378718, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378792, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378794, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378796, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378798, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378800, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378802, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378804, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378806, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378808, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378810, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378812, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3201316790093378814, guid: 4a769d0345654f345be733003b50a3e2, type: 3}
       propertyPath: m_TagString
       value: Floor
       objectReference: {fileID: 0}

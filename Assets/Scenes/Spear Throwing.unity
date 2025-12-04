@@ -12244,8 +12244,8 @@ MonoBehaviour:
   grabRange: 1
   rightPositionOffset: {x: 0, y: -0.2, z: 0}
   rightRotationOffset: {x: 0, y: 0, z: 180}
-  leftPositionOffset: {x: 0, y: 0, z: 0}
-  leftRotationOffset: {x: 0, y: 0, z: 0}
+  leftPositionOffset: {x: 0, y: -0.2, z: 0}
+  leftRotationOffset: {x: 0, y: 0, z: 180}
   floorTag: Floor
   returnDelay: 0.1
   throwPower: 0.15
