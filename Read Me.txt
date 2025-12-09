@@ -1,0 +1,53 @@
+1. Clone or download the repository
+
+2. Open in Unity
+
+	Launch Unity Hub (or Unity directly).
+
+	Use “Open” and navigate to the folder you cloned (the root Mark-of-Ares folder).
+
+	Wait for Unity to load and import all assets (this may take some time, depending on your machine).
+
+3. Check/Install Required Packages (if any)
+
+	In Unity Editor, open Window → Package Manager.
+
+	If the project depends on any packages (built-in or external), make sure they are installed/resolved.
+
+	If there are any missing packages (or compile errors related to missing dependencies), install or restore them as needed.
+
+4. Configure Project Settings (if required)
+
+	If there are custom settings (graphics settings, shader pipelines, quality settings, build target, etc.), set them accordingly under Edit → Project Settings.
+
+	If there are special config files (e.g. ignore.conf, custom shaders, asset settings), verify or adjust them as needed.
+
+5. Run / Play the Project
+
+	In Unity Editor, open the appropriate Scene (e.g. MainScene, SampleScene, or whichever scene is designated as the entry point).
+
+	Click the ▶️ Play button to run the project.
+
+	If everything is configured correctly, the project should build and run within the Editor.
+
+6. Build a Standalone Executable (optional)
+
+	Go to File → Build Settings.
+
+	Select target platform (Windows, macOS, Linux, etc.).
+
+	Add the relevant Scenes to the Build list.
+
+	Click Build (optionally use Build And Run).
+
+	Choose an output folder and let Unity build the executable.
+
+7. Troubleshooting / Tips
+
+	If shaders fail to compile or there are rendering issues: check your Graphics API and Quality settings in Project Settings → Graphics / Quality.
+
+	If Unity reports missing scripts or assets: make sure you didn’t skip any files when downloading — prefer a full git clone over manually downloading a ZIP.
+
+	If third-party packages or dependencies are missing: open Package Manager and reimport or install them manually.
+
+Use Unity Console (lower panel in Unity) to inspect compile errors, runtime errors — they’ll hint at missing assets, packages, or mis-configurations.
